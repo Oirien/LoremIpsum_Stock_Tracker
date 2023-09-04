@@ -1,18 +1,21 @@
 Start by going into the base folder and running
 
-`npm install`
+```
+npm install
+```
 
 then:
 
-````cd client
+```
+cd client
 npm install
-npm run dev```
+npm run dev
+```
 
 then:
 
-```cd ..
-cd server
+```
+cd ../server
 npm install
-npm run dev```
-
-````
+npm run dev
+```
