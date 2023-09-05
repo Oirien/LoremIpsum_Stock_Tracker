@@ -53,7 +53,6 @@ function Header() {
                 gradient
                 gradientWidth={50}
                 style={{ height: 50 }}
-                className="Marquee-styling"
             >
                 {testArrayOne.map((item, index) => (
                     <div key={index}>{item} &ensp; &emsp; </div>
@@ -72,7 +71,8 @@ function Header() {
                     {' '}
                     <Link to="/support"> Support </Link>
                 </Li>
-                <Li>Else</Li>
+                <Li> <Link to="/stocks"> Stocks </Link>
+                </Li>
                 <div>
                     <SearchBar setSearchBar={setSearchBar} />
                     {searchBar && searchBar.length > 0 && (
