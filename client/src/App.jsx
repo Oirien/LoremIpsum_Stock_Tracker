@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { useQuery } from 'react-query';
 import Header from './Components/Header';
-import HomeContainer from './containers/HomeContainer';
+import { Outlet } from 'react-router-dom';
 
 const fetchDBData = async () => {
     const res = await axios.get('http://localhost:9000/api/users/');
@@ -49,8 +49,7 @@ function App() {
     return <>
     
     <Header />
-
-    <HomeContainer />
+    <Outlet/>
     
     {stockData.data[0].name}</>;
 }
