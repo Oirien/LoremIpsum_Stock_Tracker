@@ -6,12 +6,12 @@ import Marquee from "react-fast-marquee";
 
 const NavBar = styled.nav`
 /* background-color: red; */
-border:1px solid black;
 list-style: none;
 display: flex;
 justify-content: space-evenly;
 align-items: center;
 min-height: 2rem;
+padding-top:2rem;
 width: 80%;
 `;
 
@@ -19,14 +19,16 @@ width: 80%;
 const HeaderWrapper = styled.div`
 display: flex;
 flex-flow: column;
-/* border:1px solid black; */
 align-items: center;
+margin-bottom: 5rem;
 `;
 
 const Li = styled.li`
-border: 1px solid black;
-background-color: yellow;
+background-color: #252525;
+font-weight: bold;
+font-size: larger;
 padding: 5px 20px;
+border-radius: 10%;
 `;
 
 function Header() {
@@ -36,10 +38,10 @@ function Header() {
 
   return (
     <HeaderWrapper>
-         <Marquee pauseOnHover gradient style={{height:30}}>
+         <Marquee pauseOnHover gradient gradientWidth={50} style={{height:30}}>
             {testArrayOne.map((item,index) => <div key={index}>{item} &ensp; &emsp; </div> )}
         </Marquee>
-        <Marquee pauseOnHover delay={0.3} gradient style={{height:50}} className='Marquee-styling'>
+        <Marquee pauseOnHover delay={0.3} gradient gradientWidth={50} style={{height:50}} className='Marquee-styling'>
         {testArrayOne.map((item,index) => <div key={index}>{item} &ensp; &emsp; </div> )}
         </Marquee>
         <NavBar>
