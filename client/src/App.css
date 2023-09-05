@@ -6,7 +6,25 @@
 }
 
 
-.Marquee-styling {
-    background-color: white;
+
+
+.search-results__list{
+    position: absolute;
+    top: 100%;
+    left: 50.5%;
+    width: 30%; 
+    z-index: 1; 
+    border:2px solid grey;
+    
 }
+
+.search-results__list div{
+    border-bottom:1px solid white;
+    padding: 4px 4px;
+}
+
+.search-results__list a{
+    text-decoration: none;
+}
+
 

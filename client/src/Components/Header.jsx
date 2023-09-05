@@ -21,6 +21,7 @@ const HeaderWrapper = styled.div`
     flex-flow: column;
     align-items: center;
     margin-bottom: 5rem;
+    position: relative;
 `;
 
 const Li = styled.li`
@@ -30,6 +31,8 @@ const Li = styled.li`
     padding: 5px 20px;
     border-radius: 10%;
 `;
+
+
 
 function Header() {
     const [searchBar, setSearchBar] = useState({});
