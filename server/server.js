@@ -13,7 +13,7 @@ MongoClient.connect('mongodb://127.0.0.1:27017', { useUnifiedTopology: true })
     .then((client) => {
         const db = client.db('stocks_app_database');
         const usersCollection = db.collection('users');
-        const stocksCollection = db.Collection('stocks');
+        const stocksCollection = db.collection('stocks');
         const usersRouter = createRouterUsers(usersCollection);
         const stocksRouter = createRouterStocks(stocksCollection);
         app.use('/api/users', usersRouter);
