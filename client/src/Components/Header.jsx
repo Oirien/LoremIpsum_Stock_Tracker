@@ -72,10 +72,7 @@ function Header() {
                 <Li>Something</Li>
                 <Li>Else</Li>
                 <div>
-                    <SearchBar
-                        searchBar={searchBar}
-                        setSearchBar={setSearchBar}
-                    />
+                    <SearchBar setSearchBar={setSearchBar} />
                     {searchBar && searchBar.length > 0 && (
                         <SearchResultsList searchBar={searchBar} />
                     )}

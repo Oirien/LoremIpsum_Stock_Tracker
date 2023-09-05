@@ -8,7 +8,7 @@ const SearchBar = ({ setSearchBar }) => {
     const fetchData = (value) => {
         fetch(`http://localhost:9000/api/stocks/search?q=${value}`)
             .then((res) => res.json())
-            .then((data) => console.log(data));
+            .then((data) => setSearchBar(data));
     };
 
     const handleInput = (value) => {
