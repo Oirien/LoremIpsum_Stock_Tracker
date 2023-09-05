@@ -12,7 +12,7 @@ justify-content: space-evenly;
 align-items: center;
 min-height: 2rem;
 padding-top:2rem;
-width: 80%;
+width: 70%;
 `;
 
 
