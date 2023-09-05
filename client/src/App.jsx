@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { useQuery } from 'react-query';
+import Header from './Components/Header';
 
 const fetchDBData = async () => {
     const res = await axios.get('http://localhost:9000/api/users/');
@@ -44,7 +45,12 @@ function App() {
         return <div>No stock data available.</div>;
     }
 
-    return <>{stockData.data[0].name}</>;
+    return <>
+    
+    <Header/>
+
+    
+    {stockData.data[0].name}</>;
 }
 
 export default App;
