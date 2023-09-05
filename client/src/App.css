@@ -10,35 +10,3 @@
     background-color: white;
 }
 
-.information {
-    all: unset;
-    background: #00aaff;
-    color: white;
-    border-radius: 9999px;
-    font-size: 1rem;
-    width: 1.2rem;
-    height: 1.2rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer
-}
-.information:hover {
-    background: #0088ff;
-}
-.label-container {
-    display: flex;
-    gap: 0.25rem;
-}
-#confusing {
-    width: 15rem;
-    height: 1.5rem;
-}
-
-[popover] {
-    inset: unset;
-    bottom: anchor(top);
-    left: anchor(center);
-    translate: -50%;
-    margin: 0.25rem 0;
-  }
