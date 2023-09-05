@@ -18,6 +18,10 @@ function HomeContainer() {
         <div>
             Stocks List
         </div>
+
+        <div>
+            Hidden
+        </div>
     
     </HomeWrapper>
     
