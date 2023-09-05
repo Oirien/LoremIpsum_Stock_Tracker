@@ -10,9 +10,7 @@ const fetchDBData = async () => {
 };
 
 const fetchAPIData = async () => {
-    const res = await axios.get(
-        'https://api.twelvedata.com/stocks?exchange=LSE',
-    );
+    const res = await axios.get('http://localhost:9000/api/stocks/');
     return res.data;
 };
 
@@ -46,12 +44,14 @@ function App() {
         return <div>No stock data available.</div>;
     }
 
-    return <>
-    
-    <Header />
-    <Outlet/>
-    
-    {stockData.data[0].name}</>;
+    return (
+        <>
+            <Header />
+            <Outlet />
+
+            {stockData[0].name}
+        </>
+    );
 }
 
 export default App;
