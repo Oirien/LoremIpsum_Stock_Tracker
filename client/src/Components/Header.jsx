@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
 import Marquee from "react-fast-marquee";
+import { Link } from 'react-router-dom';
 
 
 
@@ -45,9 +46,9 @@ function Header() {
         {testArrayOne.map((item,index) => <div key={index}>{item} &ensp; &emsp; </div> )}
         </Marquee>
         <NavBar>
-            <Li>Home</Li>
-            <Li>Portfolio</Li>
-            <Li>Something</Li>
+            <Li> <Link to="/"> Home  </Link></Li>
+            <Li> <Link to="/portfolio">Portfolio</Link> </Li>
+            <Li> <Link to="/support"> Support </Link></Li>
             <Li>Else</Li>
         </NavBar>
        
