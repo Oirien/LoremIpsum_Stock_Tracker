@@ -13,6 +13,14 @@ const NavBar = styled.nav`
     min-height: 2rem;
     padding-top: 2rem;
     width: 80%;
+    /* background-color: red; */
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    min-height: 2rem;
+    padding-top: 2rem;
+    width: 70%;
 `;
 
 const HeaderWrapper = styled.div`

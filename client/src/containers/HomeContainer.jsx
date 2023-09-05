@@ -3,11 +3,10 @@ import styled from 'styled-components'
 import { useState } from 'react';
 
 const HomeWrapper = styled.div`
-    /* background-color: red; */
-    border:2px solid yellow;
-    gap: 8rem;
+    /* border:2px solid yellow; */
     display: flex;
     align-items: center;
+    min-height:100%;
 `;
 
 const FilterArea = styled.div`
@@ -27,10 +26,8 @@ const FilterAreaLi = styled.li`
 `;
 
 const StocksListUl = styled.ul`
- /* border:1px solid yellow; */
  display: flex;
  flex-flow: wrap;
- margin-left: -100px;
 `;
 
 const StocksListLi = styled.li`
@@ -43,7 +40,10 @@ const StocksListLi = styled.li`
 
 const HiddenComponent = styled.div`
     border:1px solid green;
-    height: 200px;
+    align-self: stretch;
+    width: auto;
+    flex:1;
+   
 `;
 
 function HomeContainer() {
@@ -52,10 +52,9 @@ function HomeContainer() {
     const items = [1,2,3,4,5,6,7,8,9,10]
 
    
-    console.log(isShown)
   return (
     <>
-    <HomeWrapper>
+    <HomeWrapper >
         <FilterArea>
             <FilterAreaLi> 1 - 9</FilterAreaLi>
             <FilterAreaLi> 10 - 19</FilterAreaLi>
@@ -73,7 +72,8 @@ function HomeContainer() {
 
         {isShown && 
         <HiddenComponent>
-            Hidden
+            Something <br /> something else <br />
+            more than a something else and more
         </HiddenComponent> 
         }
     

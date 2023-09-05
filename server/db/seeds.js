@@ -1,5 +1,5 @@
 use stocks_app_database;
-db.dropDatabase();
+db.users.drop();
 
 db.users.insertOne({
     username: 'big_jimmy',
