@@ -43,11 +43,12 @@ function App() {
     if (!stockData || stockData.length === 0) {
         return <div>No stock data available.</div>;
     }
+    console.log('userData', userData);
 
     return (
         <>
             <Header />
-            <Outlet />
+            <Outlet context={{ userData: userData }} />
 
             {stockData[0].name}
         </>

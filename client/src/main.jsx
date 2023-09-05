@@ -21,8 +21,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<App />}>
-                        <Route index element={<HomeContainer />}/>
-                        <Route path="portfolio" element={<PortfolioContainer />} />
+                        <Route index element={<HomeContainer />} />
+                        <Route
+                            path="portfolio"
+                            element={<PortfolioContainer />}
+                        />
                         <Route path="support" element={<SupportContainer />} />
                     </Route>
                 </Routes>
