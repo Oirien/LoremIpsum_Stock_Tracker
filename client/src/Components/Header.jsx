@@ -13,14 +13,6 @@ const NavBar = styled.nav`
     align-items: center;
     min-height: 2rem;
     padding-top: 2rem;
-    width: 80%;
-    /* background-color: red; */
-    list-style: none;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    min-height: 2rem;
-    padding-top: 2rem;
     width: 70%;
 `;
 
@@ -68,9 +60,18 @@ function Header() {
                 ))}
             </Marquee>
             <NavBar>
-                <Li> <Link to="/"> Home  </Link></Li>
-                <Li> <Link to="/portfolio">Portfolio</Link> </Li>
-                <Li> <Link to="/support"> Support </Link></Li>
+                <Li>
+                    {' '}
+                    <Link to="/"> Home </Link>
+                </Li>
+                <Li>
+                    {' '}
+                    <Link to="/portfolio">Portfolio</Link>{' '}
+                </Li>
+                <Li>
+                    {' '}
+                    <Link to="/support"> Support </Link>
+                </Li>
                 <Li>Else</Li>
                 <div>
                     <SearchBar setSearchBar={setSearchBar} />

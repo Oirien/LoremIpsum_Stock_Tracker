@@ -44,12 +44,14 @@ function App() {
         return <div>No stock data available.</div>;
     }
 
-    return <>
-    
-    <Header />
-    <Outlet/>
-    
-    {stockData.data[0].name}</>;
+    return (
+        <>
+            <Header />
+            <Outlet />
+
+            {stockData[0].name}
+        </>
+    );
 }
 
 export default App;
