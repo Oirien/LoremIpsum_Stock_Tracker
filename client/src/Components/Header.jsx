@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Marquee from 'react-fast-marquee';
 import SearchBar from '../Components/SearchBar/SearchBar';
 import SearchResultsList from '../Components/SearchBar/SearchResultsList';
+import { Link } from 'react-router-dom';
 
 const NavBar = styled.nav`
     /* background-color: red; */
@@ -67,9 +68,9 @@ function Header() {
                 ))}
             </Marquee>
             <NavBar>
-                <Li>Home</Li>
-                <Li>Portfolio</Li>
-                <Li>Something</Li>
+                <Li> <Link to="/"> Home  </Link></Li>
+                <Li> <Link to="/portfolio">Portfolio</Link> </Li>
+                <Li> <Link to="/support"> Support </Link></Li>
                 <Li>Else</Li>
                 <div>
                     <SearchBar setSearchBar={setSearchBar} />
