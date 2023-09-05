@@ -8,7 +8,7 @@ const SearchResultsList = ({ searchBar }) => {
                 return (
                     <SearchResult
                         searchResult={search.name}
-                        searchId={search._id}
+                        searchId={search.symbol}
                         key={i}
                     />
                 );
