@@ -8,17 +8,17 @@ db.users.insertOne({
     lifetime_profit: 0,
     stocks: [
         {
-            symbol: '0A17',
+            symbol: 'MEC',
             number_of_stocks_owned: 20,
             amount_spent: 2000,
         },
         {
-            symbol: '0A1J',
+            symbol: 'MHK',
             number_of_stocks_owned: 10,
             amount_spent: 700,
         },
         {
-            symbol: '0A1O',
+            symbol: 'FNV',
             number_of_stocks_owned: 5,
             amount_spent: 1200,
         },
