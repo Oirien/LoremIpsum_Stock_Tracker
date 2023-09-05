@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import { useQuery } from 'react-query';
-import axios from 'axios';
 
 const SearchBar = ({ setSearchBar }) => {
     const [input, setInput] = useState('');
 
     const fetchData = (value) => {
-        fetch(`http://localhost:9000/api/stocks/search?q=${value}`)
-            .then((res) => res.json())
-            .then((data) => setSearchBar(data));
+        value.length > 0
+            ? fetch(`http://localhost:9000/api/stocks/search?q=${value}`)
+                  .then((res) => res.json())
+                  .then((data) => setSearchBar(data))
+            : setSearchBar([]);
     };
 
     const handleInput = (value) => {
