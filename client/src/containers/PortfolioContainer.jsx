@@ -47,7 +47,9 @@ const HiddenComponent = styled.div`
     border-radius: 10%;
     align-self: stretch;
     padding: 2%;
-    width: auto;
+    max-width: 50%;
+    border:1px solid white;
+    margin-left:auto;
     flex: 1;
     background-color: #474747;
 `;
