@@ -14,26 +14,28 @@ const NewsWrapper = styled.div`
 `;
 
 const NewsArticle = styled.li`
-    box-shadow: 5px 5px 10px 2px rgba(0, 0, 0, 0.8);
+    box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.4);
     max-width: 30%;
-    padding: 2px 5px 20px 5px;
-    border-bottom-left-radius: 10%;
-    border-bottom-right-radius: 10%;
+    padding-bottom: 20px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
     text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    border: solid 1px #92cd86;
 `;
 
 const ArticleWrapper = styled.div`
     display: Flex;
     flex-direction: column;
+    padding: 0.5rem;
 `;
 
 const ArticleImage = styled.img`
-    max-width: 100%;
-    min-width: 100%;
+    width: 100%;
     height: 200px;
+    border-bottom: solid 1px #92cd86;
 `;
 
 const DateStyle = styled.div`
@@ -56,16 +58,23 @@ function HomeContainer() {
             .then((data) => setNews(data));
     }, []);
 
-    const articles = news.filter((item) => item.headline.includes('stock'));
+    const articles = news
+        .filter((item) => item.headline.includes('stock'))
+        .slice(0, 12);
     console.log(articles);
     return (
         <>
             <NewsWrapper>
                 {articles.map((item) => (
                     <NewsArticle key={item.id}>
+                        <ArticleImage src={item.image} alt="" />
                         <ArticleWrapper>
-                            <ArticleImage src={item.image} alt="" />
-                            <h2 style={{ borderBottom: '1px solid grey' }}>
+                            <h2
+                                style={{
+                                    borderBottom: '1px solid grey',
+                                    paddingBottom: '1rem',
+                                }}
+                            >
                                 {item.headline}
                             </h2>
                             <h4>{item.summary}</h4>

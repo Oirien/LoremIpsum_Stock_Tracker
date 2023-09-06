@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useQuery } from 'react-query';
 import Header from './Components/Header';
 import { Outlet } from 'react-router-dom';
+import { styled } from 'styled-components';
 
 const fetchDBData = async () => {
     const res = await axios.get('http://localhost:9000/api/users/');
@@ -13,6 +14,11 @@ const fetchAPIData = async () => {
     const res = await axios.get('http://localhost:9000/api/stocks/');
     return res.data;
 };
+
+const Container = styled.div`
+    margin-left: 15%;
+    margin-right: 15%;
+`;
 
 function App() {
     const {
@@ -48,9 +54,9 @@ function App() {
     return (
         <>
             <Header />
-            <Outlet context={{ userData: userData }} />
-
-            {stockData[0].name}
+            <Container>
+                <Outlet context={{ userData: userData }} />
+            </Container>
         </>
     );
 }
