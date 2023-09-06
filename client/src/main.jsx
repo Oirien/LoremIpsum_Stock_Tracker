@@ -23,10 +23,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                 <Routes>
                     <Route path="/" element={<App />}>
                         <Route index element={<HomeContainer />} />
-                        <Route
-                            path="portfolio"
-                            element={<PortfolioContainer />}
-                        />
+                        <Route path="portfolio" element={<PortfolioContainer />}/>
                         <Route path="support" element={<SupportContainer />} />
                         <Route path="stocks" element={<StockNotFound />} />
                         <Route path={'stocks/:symbol'} element={<Stock />} />
