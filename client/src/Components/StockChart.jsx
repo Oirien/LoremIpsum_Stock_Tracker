@@ -8,6 +8,7 @@ import {
     Tooltip,
     Legend,
     ResponsiveContainer,
+    Label,
 } from 'recharts';
 
 export default function Chart({ graphData }) {
@@ -33,7 +34,7 @@ export default function Chart({ graphData }) {
     ];
 
     return (
-        <ResponsiveContainer width="100%" height="100%">
+        <ResponsiveContainer width="100%" height={400}>
             <LineChart
                 width={600}
                 height={300}
@@ -42,18 +43,26 @@ export default function Chart({ graphData }) {
                     top: 5,
                     right: 30,
                     left: 30,
-                    bottom: 30,
+                    bottom: 60,
                 }}
             >
-                <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                <XAxis label="Date" dataKey="datetime" />
-                <YAxis
-                    label="USD"
-                    domain={[minChange, maxChange]}
-                    ticks={YValues}
+                <CartesianGrid strokeDasharray="1 5" vertical={false} />
+                <XAxis
+                    label={{
+                        value: 'Date',
+                        position: 'insideBottom',
+                        offset: 37,
+                    }}
+                    dataKey="datetime"
+                    reversed={true}
+                    angle={-45}
+                    textAnchor="end"
                 />
+                <YAxis domain={[minChange, maxChange]} ticks={YValues}>
+                    <Label value="USD" offset={70} position="insideLeft" />
+                </YAxis>
                 <Tooltip />
-                <Legend />
+                <Legend verticalAlign="top" />
                 <Line
                     type="monotone"
                     dataKey="close"
