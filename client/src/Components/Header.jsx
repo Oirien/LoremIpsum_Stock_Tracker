@@ -36,6 +36,7 @@ const Li = styled.li`
 function Header() {
     const [stockData, setStockData] = useState([]);
     const [searchBar, setSearchBar] = useState({});
+    const [prevPrices, setPrevPrices] = useState({});
     const socketUrl = `wss://ws.twelvedata.com/v1/quotes/price?apikey=${apiKey}`;
     const initialMessage = {
         action: 'subscribe',
@@ -52,10 +53,50 @@ function Header() {
     });
 
     useEffect(() => {
+        let timeout;
+
         if (lastJsonMessage) {
-            setStockData((prevData) => [...prevData, lastJsonMessage]);
+            timeout = setTimeout(() => {
+                const uniqueSymbols = new Set(
+                    stockData.map((item) => item.symbol),
+                );
+
+                const updatedData = [...stockData];
+                const updatedPrevPrices = { ...prevPrices };
+
+                if (!uniqueSymbols.has(lastJsonMessage.symbol)) {
+                    updatedData.push(lastJsonMessage);
+                    uniqueSymbols.add(lastJsonMessage.symbol);
+                } else {
+                    updatedData.forEach((item) => {
+                        if (item.symbol === lastJsonMessage.symbol) {
+                            if (!updatedPrevPrices[item.symbol]) {
+                                updatedPrevPrices[item.symbol] = {};
+                            }
+
+                            const prevPrice =
+                                updatedPrevPrices[item.symbol].price || 0;
+                            const currentPrice = lastJsonMessage.price;
+                            // DO NOT DELETE
+                            // if (prevPrice !== currentPrice) {
+                            //     console.log(
+                            //         `${item.symbol} price changed from ${prevPrice} to ${currentPrice}`,
+                            //     );
+                            // }
+                            updatedPrevPrices[item.symbol].price = currentPrice;
+                        }
+                    });
+                }
+
+                setStockData(updatedData);
+                setPrevPrices(updatedPrevPrices);
+            }, 300);
         }
-    }, [lastJsonMessage]);
+
+        return () => {
+            clearTimeout(timeout);
+        };
+    }, [lastJsonMessage, stockData, prevPrices]);
 
     const renderMarquee = stockData.length > 0;
 
