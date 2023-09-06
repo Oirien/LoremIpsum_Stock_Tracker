@@ -5,7 +5,7 @@ import HomeContainer from './containers/HomeContainer.jsx';
 import PortfolioContainer from './containers/PortfolioContainer.jsx';
 import SupportContainer from './containers/SupportContainer.jsx';
 import Stock from './Components/Stock.jsx';
-
+import StockNotFound from './Components/StockNotFound.jsx';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { BrowserRouter, Route, Routes, Link, Outlet } from 'react-router-dom';
 
@@ -28,7 +28,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                             element={<PortfolioContainer />}
                         />
                         <Route path="support" element={<SupportContainer />} />
-                        <Route path="stocks" element={<Stock />}/>
+                        <Route path="stocks" element={<StockNotFound />} />
+                        <Route path={'stocks/:symbol'} element={<Stock />} />
                     </Route>
                 </Routes>
             </BrowserRouter>
