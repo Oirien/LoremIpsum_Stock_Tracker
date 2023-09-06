@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
+import { newKey } from '../api-keys/apiKey';
 
 const NewsWrapper = styled.div`
     /* border: 1px solid white; */
@@ -47,7 +48,7 @@ function HomeContainer() {
     const [news, setNews] = useState([]);
     useEffect(() => {
         fetch(
-            'https://finnhub.io/api/v1/news?category=business&token=cjsbmi9r01qm5ielb4rgcjsbmi9r01qm5ielb4s0',
+            `https://finnhub.io/api/v1/news?category=business&token=${newKey}`,
         )
             .then((res) => res.json())
             .then((data) => setNews(data));
