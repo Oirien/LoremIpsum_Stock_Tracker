@@ -77,48 +77,16 @@ function PortfolioContainer() {
 
     console.log(items);
 
-    // const handlePages =(page) =>{
-    //     if(page==1){
-    //         setItems(allStocks.slice(0,9))
-    //     }else if(page == 2){
-    //         setItems(allStocks.slice(9,18))
-    //     }else if(page == 3){
-    //         setItems(allStocks.slice(18,27))
-    //     }
-    // }
-
     return (
         <>
             <PortfolioWrapper>
                 <FilterArea>
-                    <FilterAreaLi
-                        onClick={(e) => handlePages(e.target.value)}
-                        value={1}
-                    >
-                        {' '}
-                        Maybe
-                    </FilterAreaLi>
-                    <FilterAreaLi
-                        onClick={(e) => handlePages(e.target.value)}
-                        value={2}
-                    >
-                        {' '}
-                        Filter
-                    </FilterAreaLi>
-                    <FilterAreaLi
-                        onClick={(e) => handlePages(e.target.value)}
-                        value={3}
-                    >
-                        {' '}
-                        Something
-                    </FilterAreaLi>
-                    <FilterAreaLi
-                        onClick={(e) => handlePages(e.target.value)}
-                        value={4}
-                    >
-                        {' '}
-                        Here
-                    </FilterAreaLi>
+      
+                    <FilterAreaLi> Maybe</FilterAreaLi>
+                    <FilterAreaLi> Filter</FilterAreaLi>
+                    <FilterAreaLi> Something</FilterAreaLi>
+                    <FilterAreaLi> Here</FilterAreaLi>
+
                 </FilterArea>
 
                 <StocksListUl>
