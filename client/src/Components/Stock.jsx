@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import styled from 'styled-components';
@@ -49,17 +49,20 @@ function Stock() {
         return res.data;
     };
 
+    const stockQueryKey = ['stockIndividual', symbol];
+    const graphQueryKey = ['graph', symbol];
+
     const {
         data: stockIndividualData,
         error: stockIndividualError,
         isLoading: stockIndividualLoading,
-    } = useQuery('stockIndividual', fetchAPIData);
+    } = useQuery(stockQueryKey, fetchAPIData);
 
     const {
         data: graphData,
         error: graphError,
         isLoading: graphLoading,
-    } = useQuery('graph', fetchGraphData);
+    } = useQuery(graphQueryKey, fetchGraphData);
 
     const stock = {
         symbol: '020Y',
