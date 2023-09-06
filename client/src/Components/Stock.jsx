@@ -45,7 +45,7 @@ function Stock() {
 
     const fetchGraphData = async () => {
         const res = await axios.get(
-            `https://api.twelvedata.com/time_series?interval=1day&symbol=${symbol}&exchange=NYSE&apikey=${apiKey}`,
+            `https://api.twelvedata.com/time_series?interval=1day&symbol=${symbol}&dp=3&exchange=NYSE&apikey=${apiKey}`,
         );
         return res.data;
     };
@@ -74,7 +74,7 @@ function Stock() {
         country: 'United Kingdom',
         type: 'Common Stock',
     };
-    if (stockIndividualLoading) {
+    if (stockIndividualLoading || graphLoading) {
         return <div>Loading...</div>;
     }
 
@@ -82,6 +82,12 @@ function Stock() {
         console.error('Database Error:', stockIndividualError);
         return <div>Error fetching user data. Please try again later.</div>;
     }
+
+    if (graphError) {
+        console.error('API Error', graphError);
+        return <div>Error fetching API data. Please try again later.</div>;
+    }
+
     return (
         <>
             <StocksWrapper>
