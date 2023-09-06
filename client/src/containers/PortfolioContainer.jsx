@@ -48,6 +48,14 @@ const StocksListLi = styled.li`
     &:hover {
         background-color: gold;
         color: black;
+        a {
+            color: black;
+        }
+    }
+
+    a {
+        background-color: inherit;
+        text-decoration: none;
     }
 `;
 
@@ -81,12 +89,10 @@ function PortfolioContainer() {
         <>
             <PortfolioWrapper>
                 <FilterArea>
-      
                     <FilterAreaLi> Maybe</FilterAreaLi>
                     <FilterAreaLi> Filter</FilterAreaLi>
                     <FilterAreaLi> Something</FilterAreaLi>
                     <FilterAreaLi> Here</FilterAreaLi>
-
                 </FilterArea>
 
                 <StocksListUl>
