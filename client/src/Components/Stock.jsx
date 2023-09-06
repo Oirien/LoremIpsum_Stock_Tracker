@@ -7,14 +7,14 @@ import { apiKey } from '../api-keys/apiKey';
 import Chart from './StockChart';
 
 const StocksWrapper = styled.div`
-    border: 1px solid red;
+    /* border: 1px solid red; */
     display: flex;
     gap: 30px;
     min-height: 50vh;
 `;
 
 const StockInformation = styled.div`
-    border: 3px solid yellow;
+    /* border: 3px solid yellow; */
     max-width: 20%;
     padding: 4px 8px;
     display: flex;
