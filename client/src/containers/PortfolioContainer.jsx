@@ -1,19 +1,19 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { useState } from 'react';
 import { useOutletContext } from 'react-router-dom';
 
 const PortfolioWrapper = styled.div`
-    /* border:2px solid yellow; */
+    border:2px solid yellow;
     display: flex;
     align-items: center;
-    min-height: 100%;
+    height: 60vh;
     margin-bottom: 2rem;
 `;
 
 const FilterArea = styled.div`
-    min-width: 6rem;
+    min-width: 7rem;
     display: flex;
     flex-flow: column wrap;
     margin-left: 20px;
@@ -31,6 +31,9 @@ const FilterAreaLi = styled.li`
 const StocksListUl = styled.ul`
     display: flex;
     flex-flow: wrap;
+    min-width: 40vh;
+    border:1px solid red;
+    min-width: 40%;
 `;
 
 const StocksListLi = styled.li`
@@ -50,7 +53,7 @@ const HiddenComponent = styled.div`
     max-width: 50%;
     border:1px solid white;
     margin-left:auto;
-    flex: 1;
+    flex: 1 0 0;
     background-color: #474747;
 `;
 
@@ -58,18 +61,20 @@ function PortfolioContainer() {
     const [isShown, setIsShown] = useState(false);
     const [specificStock, setSpecificStock] = useState('')
     const { userData } = useOutletContext();
-    const items = userData[0].stocks.map((stock) => {
+    const allStocks = userData[0].stocks.map((stock) => {
         return stock;
     });
 
-    console.log(items)
+    let items = allStocks.slice(0,9)
+
+
     return (
         <>
             <PortfolioWrapper>
                 <FilterArea>
-                    <FilterAreaLi> 1 - 9</FilterAreaLi>
-                    <FilterAreaLi> 10 - 19</FilterAreaLi>
-                    <FilterAreaLi> 20 - 29</FilterAreaLi>
+                    <FilterAreaLi > 1 - 9</FilterAreaLi>
+                    <FilterAreaLi > 10 - 19</FilterAreaLi>
+                    <FilterAreaLi > 20 - 29</FilterAreaLi>
                 </FilterArea>
 
                 <StocksListUl>
@@ -94,6 +99,10 @@ function PortfolioContainer() {
                         Stock Symbol: {items[specificStock].symbol} <br />
                         Amount Spent: {items[specificStock].amount_spent}$ <br />
                         Stocks owned: {items[specificStock].number_of_stocks_owned}
+                        <br /> more
+                        <br /> more
+                        <br /> more
+                        <br />more
                     </HiddenComponent>
                 )}
             </PortfolioWrapper>
