@@ -45,3 +45,9 @@
     width: 10px;
     background-color: white;
   }
+
+.remove_a_style{
+    text-decoration: none;
+    background-color: inherit;
+    
+}

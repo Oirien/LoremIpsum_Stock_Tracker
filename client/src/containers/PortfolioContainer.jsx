@@ -48,6 +48,9 @@ const StocksListLi = styled.li`
     &:hover {
         background-color: gold;
         color: black;
+        a {
+            color: black;
+        }
     }
 `;
 
@@ -81,12 +84,10 @@ function PortfolioContainer() {
         <>
             <PortfolioWrapper>
                 <FilterArea>
-      
                     <FilterAreaLi> Maybe</FilterAreaLi>
                     <FilterAreaLi> Filter</FilterAreaLi>
                     <FilterAreaLi> Something</FilterAreaLi>
                     <FilterAreaLi> Here</FilterAreaLi>
-
                 </FilterArea>
 
                 <StocksListUl>
@@ -103,7 +104,8 @@ function PortfolioContainer() {
                             }}
                         >
                             <Link
-                                className="search__result"
+                                // className="search__result"
+                                className="remove_a_style"
                                 to={`/stocks/${item.symbol}`}
                             >
                                 {item.symbol}
