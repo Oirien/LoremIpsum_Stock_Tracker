@@ -8,10 +8,12 @@ import {
     Tooltip,
     Legend,
     ResponsiveContainer,
-    Layer,
 } from 'recharts';
 
 export default function Chart({ graphData }) {
+    if (!graphData) {
+        return <h1>Shits broke yo</h1>;
+    }
     const data = graphData.values;
     const minValue = Math.min(...data.map((value) => value.low));
     const maxValue = Math.max(...data.map((value) => value.high));
@@ -30,10 +32,6 @@ export default function Chart({ graphData }) {
         Math.round((maxValue + Number.EPSILON) * 100) / 100,
     ];
 
-    if (!graphData) {
-        return <h1>Shits broke yo</h1>;
-    }
-
     return (
         <ResponsiveContainer width="100%" height="100%">
             <LineChart
@@ -47,18 +45,7 @@ export default function Chart({ graphData }) {
                     bottom: 30,
                 }}
             >
-                <CartesianGrid
-                    strokeDasharray="3 3"
-                    horizontalCoordinatesGenerator={(props) => [
-                        props.height * 0.078,
-                        props.height * 0.1925,
-                        props.height * 0.3042,
-                        props.height * 0.415,
-                        props.height * 0.525,
-                        props.height * 0.6375,
-                        props.height * 0.752,
-                    ]}
-                />
+                <CartesianGrid strokeDasharray="3 3" vertical={false} />
                 <XAxis label="Date" dataKey="datetime" />
                 <YAxis
                     label="USD"
@@ -75,12 +62,6 @@ export default function Chart({ graphData }) {
                 />
                 <Line type="monotone" dataKey="high" stroke="#82ca9d" />
                 <Line type="monotone" dataKey="low" stroke="#FF0000" />
-                <Layer>
-                    <CartesianGrid
-                        strokeDasharray="3 3"
-                        horizontalCoordinatesGenerator={() => YValues}
-                    />
-                </Layer>
             </LineChart>
         </ResponsiveContainer>
     );
