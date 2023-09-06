@@ -40,6 +40,7 @@ const DateStyle = styled.div`
     display: flex;
     justify-content: flex-end;
     border-radius: 50%;
+    padding-right: 1rem;
 `;
 
 function HomeContainer() {
