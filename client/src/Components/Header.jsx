@@ -53,22 +53,26 @@ function Header() {
     //     return dataArray;
     // });
 
-    const stockData = [{
-        name: "Company A",
-        symbol: "AAA",
-        close: 10,
-        percent_change: 3.2
-    },{
-        name: "Company b",
-        symbol: "BBB",
-        close: 10,
-        percent_change: -3.2
-    },{
-        name: "Company C",
-        symbol: "CCC",
-        close: 20,
-        percent_change: 0
-    }]
+    const stockData = [
+        {
+            name: 'Company A',
+            symbol: 'AAA',
+            close: 10,
+            percent_change: 3.2,
+        },
+        {
+            name: 'Company b',
+            symbol: 'BBB',
+            close: 10,
+            percent_change: -3.2,
+        },
+        {
+            name: 'Company C',
+            symbol: 'CCC',
+            close: 20,
+            percent_change: 0,
+        },
+    ];
 
     return (
         <HeaderWrapper>
@@ -97,21 +101,29 @@ function Header() {
                 gradientWidth={50}
                 style={{ height: 50 }}
             >
-               {stockData &&
+                {stockData &&
                     // !stockIsLoading &&
                     // !stockError &&
                     stockData.map((item, index) => (
                         <div key={index}>
                             {item.name} ({item.symbol}) | Close: {item.close} |
-                            Change: 
-                            {item.percent_change > 0 
-                            ?<> &ensp; <i className="arrow up"></i></>
-                            :item.percent_change !=0
-                            && <>&ensp;<i className="arrow down"></i></>}{/* end of ternary */}
+                            Change:
+                            {item.percent_change > 0 ? (
+                                <>
+                                    {' '}
+                                    &ensp; <i className="arrow up"></i>
+                                </>
+                            ) : (
+                                item.percent_change != 0 && (
+                                    <>
+                                        &ensp;<i className="arrow down"></i>
+                                    </>
+                                )
+                            )}
+                            {/* end of ternary */}
                             &ensp;
-
-                             {item.percent_change}% 
-                            &ensp; &emsp;{/* end of item*/}
+                            {item.percent_change}% &ensp; &emsp;
+                            {/* end of item*/}
                         </div>
                     ))}
             </Marquee>
@@ -133,7 +145,10 @@ function Header() {
                     <SearchBar setSearchBar={setSearchBar} />
                     {searchBar && searchBar.length > 0 && (
                         // <SearchResultsList searchBar={searchBar} />
-                        <SearchResultsList searchBar={searchBar} setSearchBar={setSearchBar}/>
+                        <SearchResultsList
+                            searchBar={searchBar}
+                            setSearchBar={setSearchBar}
+                        />
                     )}
                 </div>
             </NavBar>

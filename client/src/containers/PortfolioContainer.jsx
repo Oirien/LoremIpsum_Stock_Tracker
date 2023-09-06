@@ -30,7 +30,7 @@ const FilterAreaLi = styled.li`
 const StocksListUl = styled.ul`
     display: flex;
     flex-flow: row wrap;
-    height:300px;
+    height: 300px;
     overflow-y: scroll;
     /* border:1px solid red; */
     max-width: 60%;
@@ -44,9 +44,9 @@ const StocksListLi = styled.li`
     background-color: #353535;
     border-radius: 10%;
     margin: 20px;
-    &:hover{
+    &:hover {
         background-color: gold;
-        color:black;
+        color: black;
     }
 `;
 
@@ -55,35 +55,33 @@ const HiddenComponent = styled.div`
     align-self: stretch;
     padding: 2%;
     max-width: 50%;
-    border:1px solid white;
-    margin-left:auto;
+    border: 1px solid white;
+    margin-left: auto;
     flex: 1;
     background-color: #474747;
 `;
 
 function PortfolioContainer() {
     const [isShown, setIsShown] = useState(false);
-    const [specificStock, setSpecificStock] = useState('')
+    const [specificStock, setSpecificStock] = useState('');
     const { userData } = useOutletContext();
-    const [items,setItems] = useState([])
+    const [items, setItems] = useState([]);
     const allStocks = userData[0].stocks.map((stock) => {
         return stock;
     });
 
     useEffect(() => {
-        setItems(allStocks)
-    },[])
-
-
+        setItems(allStocks);
+    }, []);
 
     return (
         <>
             <PortfolioWrapper>
                 <FilterArea>
-                    <FilterAreaLi > Maybe</FilterAreaLi>
-                    <FilterAreaLi > Filter</FilterAreaLi>
-                    <FilterAreaLi > Something</FilterAreaLi>
-                    <FilterAreaLi > Here</FilterAreaLi>
+                    <FilterAreaLi> Maybe</FilterAreaLi>
+                    <FilterAreaLi> Filter</FilterAreaLi>
+                    <FilterAreaLi> Something</FilterAreaLi>
+                    <FilterAreaLi> Here</FilterAreaLi>
                 </FilterArea>
 
                 <StocksListUl>
@@ -91,12 +89,13 @@ function PortfolioContainer() {
                         <StocksListLi
                             key={index}
                             onMouseEnter={() => {
-                                setSpecificStock(index)
-                                setIsShown(true)
+                                setSpecificStock(index);
+                                setIsShown(true);
                             }}
                             onMouseLeave={() => {
-                                setSpecificStock('')
-                                setIsShown(false)}}
+                                setSpecificStock('');
+                                setIsShown(false);
+                            }}
                         >
                             {item.symbol}
                         </StocksListLi>
@@ -106,8 +105,10 @@ function PortfolioContainer() {
                 {isShown && (
                     <HiddenComponent>
                         Stock Symbol: {items[specificStock].symbol} <br />
-                        Amount Spent: {items[specificStock].amount_spent}$ <br />
-                        Stocks owned: {items[specificStock].number_of_stocks_owned}
+                        Amount Spent: {items[specificStock].amount_spent}${' '}
+                        <br />
+                        Stocks owned:{' '}
+                        {items[specificStock].number_of_stocks_owned}
                     </HiddenComponent>
                 )}
             </PortfolioWrapper>
