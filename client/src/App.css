@@ -5,13 +5,10 @@
     color: whitesmoke;
 }
 
-
-
-
 .search-results__list{
     position: absolute;
     top: 100%;
-    left: 50.5%;
+    left: 50.8%;
     width: 30%; 
     z-index: 1; 
     border:2px solid grey;

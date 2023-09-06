@@ -56,11 +56,13 @@ const HiddenComponent = styled.div`
 
 function PortfolioContainer() {
     const [isShown, setIsShown] = useState(false);
+    const [specificStock, setSpecificStock] = useState('')
     const { userData } = useOutletContext();
     const items = userData[0].stocks.map((stock) => {
-        return stock.symbol;
+        return stock;
     });
 
+    console.log(items)
     return (
         <>
             <PortfolioWrapper>
@@ -74,18 +76,24 @@ function PortfolioContainer() {
                     {items.map((item, index) => (
                         <StocksListLi
                             key={index}
-                            onMouseEnter={() => setIsShown(true)}
-                            onMouseLeave={() => setIsShown(false)}
+                            onMouseEnter={() => {
+                                setSpecificStock(index)
+                                setIsShown(true)
+                            }}
+                            onMouseLeave={() => {
+                                setSpecificStock('')
+                                setIsShown(false)}}
                         >
-                            {item}
+                            {item.symbol}
                         </StocksListLi>
                     ))}
                 </StocksListUl>
 
                 {isShown && (
                     <HiddenComponent>
-                        Something <br /> something else <br />
-                        more than a something else and more
+                        Stock Symbol: {items[specificStock].symbol} <br />
+                        Amount Spent: {items[specificStock].amount_spent}$ <br />
+                        Stocks owned: {items[specificStock].number_of_stocks_owned}
                     </HiddenComponent>
                 )}
             </PortfolioWrapper>

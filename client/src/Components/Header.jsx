@@ -101,7 +101,8 @@ function Header() {
                 <div>
                     <SearchBar setSearchBar={setSearchBar} />
                     {searchBar && searchBar.length > 0 && (
-                        <SearchResultsList searchBar={searchBar} />
+                        // <SearchResultsList searchBar={searchBar} />
+                        <SearchResultsList searchBar={searchBar} setSearchBar={setSearchBar}/>
                     )}
                 </div>
             </NavBar>
