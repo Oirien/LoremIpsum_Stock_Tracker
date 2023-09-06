@@ -1,53 +1,41 @@
-*{
-    font-family: "Poppins", sans-serif;
+* {
+    font-family: 'Poppins', sans-serif;
     list-style: none;
     background-color: #232323;
     color: whitesmoke;
 }
 
-.search-results__list{
+.search-results__list {
     position: absolute;
     top: 100%;
     left: 50.8%;
-    width: 30%; 
-    z-index: 1; 
-    border:2px solid grey;
-    
+    width: 30%;
+    z-index: 1;
+    border: 2px solid grey;
 }
 
-.search-results__list div{
-    border-bottom:1px solid white;
+.search-results__list div {
+    border-bottom: 1px solid white;
     padding: 4px 4px;
 }
 
-.search-results__list a{
+.search-results__list a {
     text-decoration: none;
 }
 
 .up {
-    border:3px solid green;
+    border: 3px solid green;
     transform: rotate(-135deg);
     -webkit-transform: rotate(-135deg);
-  }
-  
-  .down {
-    border:3px solid red;
+}
+
+.down {
+    border: 3px solid red;
     transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
-  }
-  .arrow {
+}
+.arrow {
     border-width: 0 3px 3px 0;
     display: inline-block;
     padding: 3px;
-  }
-  .rectangle {
-    height: 5px;
-    width: 10px;
-    background-color: white;
-  }
 
-.remove_a_style{
-    text-decoration: none;
-    background-color: inherit;
-    
-}

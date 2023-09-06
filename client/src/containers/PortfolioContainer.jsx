@@ -51,6 +51,13 @@ const StocksListLi = styled.li`
         a {
             color: black;
         }
+
+    }
+
+    a {
+        background-color: inherit;
+        text-decoration: none;
+
     }
 `;
 
