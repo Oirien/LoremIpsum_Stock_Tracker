@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { useState } from 'react';
 import { useOutletContext } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const PortfolioWrapper = styled.div`
     /* border:2px solid yellow; */
@@ -74,14 +75,18 @@ function PortfolioContainer() {
         setItems(allStocks);
     }, []);
 
+    console.log(items);
+
     return (
         <>
             <PortfolioWrapper>
                 <FilterArea>
+      
                     <FilterAreaLi> Maybe</FilterAreaLi>
                     <FilterAreaLi> Filter</FilterAreaLi>
                     <FilterAreaLi> Something</FilterAreaLi>
                     <FilterAreaLi> Here</FilterAreaLi>
+
                 </FilterArea>
 
                 <StocksListUl>
@@ -97,7 +102,12 @@ function PortfolioContainer() {
                                 setIsShown(false);
                             }}
                         >
-                            {item.symbol}
+                            <Link
+                                className="search__result"
+                                to={`/stocks/${item.symbol}`}
+                            >
+                                {item.symbol}
+                            </Link>
                         </StocksListLi>
                     ))}
                 </StocksListUl>
