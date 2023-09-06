@@ -23,24 +23,39 @@ db.users.insertOne({
             amount_spent: 1200,
         },
         {
-            symbol: 'MEC',
+            symbol: 'ACB',
             number_of_stocks_owned: 20,
-            amount_spent: 2000,
+            amount_spent: 300,
         },
         {
-            symbol: 'MHK',
+            symbol: 'ACC',
             number_of_stocks_owned: 10,
             amount_spent: 700,
         },
         {
-            symbol: 'FNV',
+            symbol: 'ACD',
+            number_of_stocks_owned: 3,
+            amount_spent: 1200,
+        },
+        {
+            symbol: 'ACE',
+            number_of_stocks_owned: 22,
+            amount_spent: 200,
+        },
+        {
+            symbol: 'ACF',
+            number_of_stocks_owned: 10,
+            amount_spent: 400,
+        },
+        {
+            symbol: 'CDX',
             number_of_stocks_owned: 5,
             amount_spent: 1200,
         },
         {
-            symbol: 'MEC',
-            number_of_stocks_owned: 20,
-            amount_spent: 2000,
+            symbol: 'CQL',
+            number_of_stocks_owned: 10,
+            amount_spent: 1000, 
         },
         {
             symbol: 'MHK',
@@ -48,52 +63,47 @@ db.users.insertOne({
             amount_spent: 700,
         },
         {
-            symbol: 'FNV',
+            symbol: 'CQM',
+            number_of_stocks_owned: 6,
+            amount_spent: 200,
+        },
+        {
+            symbol: 'CUN',
+            number_of_stocks_owned: 30,
+            amount_spent: 100,
+        },
+        {
+            symbol: 'DTK',
+            number_of_stocks_owned: 30,
+            amount_spent: 600,
+        },
+        {
+            symbol: 'DUI',
+            number_of_stocks_owned: 50,
+            amount_spent: 200,
+        },
+        {
+            symbol: 'DVA',
+            number_of_stocks_owned: 10,
+            amount_spent: 600,
+        },
+        {
+            symbol: 'DWL',
+            number_of_stocks_owned: 80,
+            amount_spent: 7000,
+        },
+        {
+            symbol: 'EEE',
             number_of_stocks_owned: 5,
             amount_spent: 1200,
         },
         {
-            symbol: 'MEC',
-            number_of_stocks_owned: 20,
-            amount_spent: 2000,
-        },
-        {
-            symbol: 'MHK',
+            symbol: 'EEI',
             number_of_stocks_owned: 10,
             amount_spent: 700,
         },
         {
-            symbol: 'FNV',
-            number_of_stocks_owned: 5,
-            amount_spent: 1200,
-        },
-        {
-            symbol: 'MEC',
-            number_of_stocks_owned: 20,
-            amount_spent: 2000,
-        },
-        {
-            symbol: 'MHK',
-            number_of_stocks_owned: 10,
-            amount_spent: 700,
-        },
-        {
-            symbol: 'FNV',
-            number_of_stocks_owned: 5,
-            amount_spent: 1200,
-        },
-        {
-            symbol: 'MEC',
-            number_of_stocks_owned: 20,
-            amount_spent: 2000,
-        },
-        {
-            symbol: 'MHK',
-            number_of_stocks_owned: 10,
-            amount_spent: 700,
-        },
-        {
-            symbol: 'FNV',
+            symbol: 'EFW',
             number_of_stocks_owned: 5,
             amount_spent: 1200,
         }
