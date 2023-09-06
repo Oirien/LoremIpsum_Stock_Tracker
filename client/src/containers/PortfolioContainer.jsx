@@ -51,11 +51,13 @@ const StocksListLi = styled.li`
         a {
             color: black;
         }
+
     }
 
     a {
         background-color: inherit;
         text-decoration: none;
+
     }
 `;
 
@@ -109,7 +111,8 @@ function PortfolioContainer() {
                             }}
                         >
                             <Link
-                                className="search__result"
+                                // className="search__result"
+                                className="remove_a_style"
                                 to={`/stocks/${item.symbol}`}
                             >
                                 {item.symbol}

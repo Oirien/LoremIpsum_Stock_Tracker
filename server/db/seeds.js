@@ -8,82 +8,77 @@ db.users.insertOne({
     lifetime_profit: 0,
     stocks: [
         {
-            symbol: 'MEC',
+            symbol: 'AA',
             number_of_stocks_owned: 20,
             amount_spent: 2000,
         },
         {
-            symbol: 'MHK',
+            symbol: 'AAC',
             number_of_stocks_owned: 10,
             amount_spent: 700,
         },
         {
-            symbol: 'FNV',
+            symbol: 'AAIC',
             number_of_stocks_owned: 5,
             amount_spent: 1200,
         },
         {
-            symbol: 'ACB',
+            symbol: 'AAMC',
             number_of_stocks_owned: 20,
             amount_spent: 300,
         },
         {
-            symbol: 'ACC',
-            number_of_stocks_owned: 10,
-            amount_spent: 700,
-        },
-        {
-            symbol: 'ACD',
+            symbol: 'BC',
             number_of_stocks_owned: 3,
             amount_spent: 1200,
         },
         {
-            symbol: 'ACE',
+            symbol: 'BA',
             number_of_stocks_owned: 22,
             amount_spent: 200,
         },
         {
-            symbol: 'ACF',
+            symbol: 'BAMR',
             number_of_stocks_owned: 10,
             amount_spent: 400,
         },
         {
-            symbol: 'CDX',
+            symbol: 'BEN',
             number_of_stocks_owned: 5,
             amount_spent: 1200,
         },
         {
-            symbol: 'CQL',
+            symbol: 'BEP',
             number_of_stocks_owned: 10,
             amount_spent: 1000, 
         },
         {
-            symbol: 'MHK',
+            symbol: 'BIP',
             number_of_stocks_owned: 10,
             amount_spent: 700,
         },
         {
-            symbol: 'CQM',
+            symbol: 'BLCO',
             number_of_stocks_owned: 6,
             amount_spent: 200,
         },
         {
-            symbol: 'CUN',
+            symbol: 'CF',
             number_of_stocks_owned: 30,
             amount_spent: 100,
         },
         {
-            symbol: 'DTK',
+            symbol: 'CFG',
             number_of_stocks_owned: 30,
             amount_spent: 600,
         },
         {
-            symbol: 'DUI',
+            symbol: 'CHT',
             number_of_stocks_owned: 50,
             amount_spent: 200,
         },
         {
-            symbol: 'DVA',
+            symbol: 'CIA',
             number_of_stocks_owned: 10,
             amount_spent: 600,
         },
@@ -98,14 +93,9 @@ db.users.insertOne({
             amount_spent: 1200,
         },
         {
-            symbol: 'EEI',
+            symbol: 'ABC',
             number_of_stocks_owned: 10,
             amount_spent: 700,
-        },
-        {
-            symbol: 'EFW',
-            number_of_stocks_owned: 5,
-            amount_spent: 1200,
         }
     ],
 });
