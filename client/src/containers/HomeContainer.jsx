@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import { newKey } from '../api-keys/apiKey';
+import ScrollToTop from 'react-scroll-to-top';
 
 const NewsWrapper = styled.div`
     /* border: 1px solid white; */
@@ -79,6 +80,11 @@ function HomeContainer() {
                     </NewsArticle>
                 ))}
             </NewsWrapper>
+            <ScrollToTop
+                smooth
+                color="black"
+                className="scroll-to-top-button"
+            />
         </>
     );
 }
