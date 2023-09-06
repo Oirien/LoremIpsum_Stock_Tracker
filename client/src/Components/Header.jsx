@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Marquee from 'react-fast-marquee';
 import SearchBar from '../Components/SearchBar/SearchBar';
 import SearchResultsList from '../Components/SearchBar/SearchResultsList';
 import { Link } from 'react-router-dom';
-import { useQuery } from 'react-query';
+import useWebSocket from 'react-use-websocket';
 import { apiKey } from '../api-keys/apiKey';
 
 const NavBar = styled.nav`
@@ -34,99 +34,56 @@ const Li = styled.li`
 `;
 
 function Header() {
+    const [stockData, setStockData] = useState([]);
     const [searchBar, setSearchBar] = useState({});
-    const testArrayOne = ['George', 'Rob', 'John'];
+    const socketUrl = `wss://ws.twelvedata.com/v1/quotes/price?apikey=${apiKey}`;
+    const initialMessage = {
+        action: 'subscribe',
+        params: {
+            symbols: 'AAPL,QQQ,ABML,EUR/USD,BTC/USD,BT.A:LSE,VFIAX,IXIC',
+        },
+    };
+    const { sendJsonMessage, lastJsonMessage } = useWebSocket(socketUrl, {
+        onOpen: () => {
+            console.log('WebSocket opened');
+            sendJsonMessage(initialMessage);
+        },
+        shouldReconnect: (closeEvent) => true,
+    });
 
-    // const {
-    //     data: stockData,
-    //     error: stockError,
-    //     isLoading: stockIsLoading,
-    // } = useQuery('stockData', async () => {
-    //     const response = await fetch(
-    //         `https://api.twelvedata.com/quote?symbol=CIM,CL,HSY,MCD&exchange=NYSE&apikey=${apiKey}`,
-    //     );
-    //     if (!response.ok) {
-    //         throw new Error('Network response was not ok');
-    //     }
-    //     const jsonData = await response.json();
-    //     const dataArray = Object.values(jsonData);
-    //     return dataArray;
-    // });
+    useEffect(() => {
+        if (lastJsonMessage) {
+            setStockData((prevData) => [...prevData, lastJsonMessage]);
+        }
+    }, [lastJsonMessage]);
 
-    const stockData = [
-        {
-            name: 'Company A',
-            symbol: 'AAA',
-            close: 10,
-            percent_change: 3.2,
-        },
-        {
-            name: 'Company b',
-            symbol: 'BBB',
-            close: 10,
-            percent_change: -3.2,
-        },
-        {
-            name: 'Company C',
-            symbol: 'CCC',
-            close: 20,
-            percent_change: 0,
-        },
-    ];
+    const renderMarquee = stockData.length > 0;
 
     return (
         <HeaderWrapper>
-            {/* <Marquee
-                pauseOnHover
-                gradient
-                gradientWidth={50}
-                style={{ height: 30 }}
-            >
-                {stockData &&
-                    !stockIsLoading &&
-                    !stockError &&
-                    stockData.map((item, index) => (
+            {renderMarquee && (
+                <Marquee
+                    pauseOnHover
+                    delay={0}
+                    gradient
+                    gradientColor={[35, 35, 35]}
+                    gradientWidth={50}
+                    style={{ height: 50 }}
+                >
+                    {stockData.map((item, index) => (
                         <div key={index}>
-                            {item.name} ({item.symbol}) | Close: {item.close} |
-                            % Change: {item.percent_change}
-                            &ensp; &emsp;
+                            {item.symbol} |{' '}
+                            {item.price
+                                ? `Price: ${item.price.toFixed(2)} |`
+                                : 'Price: N/A |'}
+                            {item.exchange
+                                ? `Exchange: ${item.exchange}`
+                                : 'Exchange: N/A'}
+                            &emsp;
                         </div>
                     ))}
-            </Marquee> */}
-
-            <Marquee
-                pauseOnHover
-                delay={0.3}
-                gradient
-                gradientWidth={50}
-                style={{ height: 50 }}
-            >
-                {stockData &&
-                    // !stockIsLoading &&
-                    // !stockError &&
-                    stockData.map((item, index) => (
-                        <div key={index}>
-                            {item.name} ({item.symbol}) | Close: {item.close} |
-                            Change:
-                            {item.percent_change > 0 ? (
-                                <>
-                                    {' '}
-                                    &ensp; <i className="arrow up"></i>
-                                </>
-                            ) : (
-                                item.percent_change != 0 && (
-                                    <>
-                                        &ensp;<i className="arrow down"></i>
-                                    </>
-                                )
-                            )}
-                            {/* end of ternary */}
-                            &ensp;
-                            {item.percent_change}% &ensp; &emsp;
-                            {/* end of item*/}
-                        </div>
-                    ))}
-            </Marquee>
+                </Marquee>
+            )}
 
             <NavBar>
                 <Li>
@@ -144,7 +101,6 @@ function Header() {
                 <div>
                     <SearchBar setSearchBar={setSearchBar} />
                     {searchBar && searchBar.length > 0 && (
-                        // <SearchResultsList searchBar={searchBar} />
                         <SearchResultsList
                             searchBar={searchBar}
                             setSearchBar={setSearchBar}
