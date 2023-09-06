@@ -22,5 +22,80 @@ db.users.insertOne({
             number_of_stocks_owned: 5,
             amount_spent: 1200,
         },
+        {
+            symbol: 'MEC',
+            number_of_stocks_owned: 20,
+            amount_spent: 2000,
+        },
+        {
+            symbol: 'MHK',
+            number_of_stocks_owned: 10,
+            amount_spent: 700,
+        },
+        {
+            symbol: 'FNV',
+            number_of_stocks_owned: 5,
+            amount_spent: 1200,
+        },
+        {
+            symbol: 'MEC',
+            number_of_stocks_owned: 20,
+            amount_spent: 2000,
+        },
+        {
+            symbol: 'MHK',
+            number_of_stocks_owned: 10,
+            amount_spent: 700,
+        },
+        {
+            symbol: 'FNV',
+            number_of_stocks_owned: 5,
+            amount_spent: 1200,
+        },
+        {
+            symbol: 'MEC',
+            number_of_stocks_owned: 20,
+            amount_spent: 2000,
+        },
+        {
+            symbol: 'MHK',
+            number_of_stocks_owned: 10,
+            amount_spent: 700,
+        },
+        {
+            symbol: 'FNV',
+            number_of_stocks_owned: 5,
+            amount_spent: 1200,
+        },
+        {
+            symbol: 'MEC',
+            number_of_stocks_owned: 20,
+            amount_spent: 2000,
+        },
+        {
+            symbol: 'MHK',
+            number_of_stocks_owned: 10,
+            amount_spent: 700,
+        },
+        {
+            symbol: 'FNV',
+            number_of_stocks_owned: 5,
+            amount_spent: 1200,
+        },
+        {
+            symbol: 'MEC',
+            number_of_stocks_owned: 20,
+            amount_spent: 2000,
+        },
+        {
+            symbol: 'MHK',
+            number_of_stocks_owned: 10,
+            amount_spent: 700,
+        },
+        {
+            symbol: 'FNV',
+            number_of_stocks_owned: 5,
+            amount_spent: 1200,
+        }
     ],
 });
