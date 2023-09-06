@@ -37,25 +37,25 @@ function Header() {
     const [searchBar, setSearchBar] = useState({});
     const testArrayOne = ['George', 'Rob', 'John'];
 
-    const {
-        data: stockData,
-        error: stockError,
-        isLoading: stockIsLoading,
-    } = useQuery('stockData', async () => {
-        const response = await fetch(
-            `https://api.twelvedata.com/quote?symbol=CIM,CL,HSY,MCD&exchange=NYSE&apikey=${apiKey}`,
-        );
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        const jsonData = await response.json();
-        const dataArray = Object.values(jsonData);
-        return dataArray;
-    });
+    // const {
+    //     data: stockData,
+    //     error: stockError,
+    //     isLoading: stockIsLoading,
+    // } = useQuery('stockData', async () => {
+    //     const response = await fetch(
+    //         `https://api.twelvedata.com/quote?symbol=CIM,CL,HSY,MCD&exchange=NYSE&apikey=${apiKey}`,
+    //     );
+    //     if (!response.ok) {
+    //         throw new Error('Network response was not ok');
+    //     }
+    //     const jsonData = await response.json();
+    //     const dataArray = Object.values(jsonData);
+    //     return dataArray;
+    // });
 
     return (
         <HeaderWrapper>
-            <Marquee
+            {/* <Marquee
                 pauseOnHover
                 gradient
                 gradientWidth={50}
@@ -71,7 +71,7 @@ function Header() {
                             &ensp; &emsp;
                         </div>
                     ))}
-            </Marquee>
+            </Marquee> */}
 
             <Marquee
                 pauseOnHover
