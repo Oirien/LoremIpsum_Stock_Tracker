@@ -22,16 +22,14 @@ const SearchResultsList = ({ searchBar, setSearchBar }) => {
         }
     }
 
-
     return (
-        <div className="search-results__list" >
+        <div className="search-results__list" ref={refOne}>
             {searchBar.map((search, i) => {
                 return (
                     <SearchResult
                         searchResult={search.name}
                         searchId={search.symbol}
                         key={i}
-                        ref={refOne}
                     />
                 );
             })}
