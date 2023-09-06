@@ -8,22 +8,27 @@ import {
     Tooltip,
     Legend,
     ResponsiveContainer,
+    Layer,
 } from 'recharts';
 
 export default function Chart({ graphData }) {
     const data = graphData.values;
     const minValue = Math.min(...data.map((value) => value.low));
     const maxValue = Math.max(...data.map((value) => value.high));
-    const minChange =
-        minValue - minValue * 0.25 > 10
-            ? minValue - 10
-            : minValue - minValue * 0.25;
-    const maxChange =
-        maxValue + maxValue * 0.25 > 10
-            ? maxValue + 10
-            : maxValue + maxValue * 0.25;
+    const change = (maxValue - minValue) * 0.1;
+    const minChange = minValue - change;
+    const maxChange = maxValue + change;
+    const valueChange = (maxValue - minValue) / 6;
 
-    const yDomain = [minChange, maxChange];
+    const YValues = [
+        Math.round((minValue + Number.EPSILON) * 100) / 100,
+        Math.round((minValue + valueChange + Number.EPSILON) * 100) / 100,
+        Math.round((minValue + valueChange * 2 + Number.EPSILON) * 100) / 100,
+        Math.round((minValue + valueChange * 3 + Number.EPSILON) * 100) / 100,
+        Math.round((minValue + valueChange * 4 + Number.EPSILON) * 100) / 100,
+        Math.round((minValue + valueChange * 5 + Number.EPSILON) * 100) / 100,
+        Math.round((maxValue + Number.EPSILON) * 100) / 100,
+    ];
 
     if (!graphData) {
         return <h1>Shits broke yo</h1>;
@@ -32,19 +37,34 @@ export default function Chart({ graphData }) {
     return (
         <ResponsiveContainer width="100%" height="100%">
             <LineChart
-                width={500}
+                width={600}
                 height={300}
                 data={data}
                 margin={{
                     top: 5,
                     right: 30,
-                    left: 20,
-                    bottom: 5,
+                    left: 30,
+                    bottom: 30,
                 }}
             >
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="datetime" />
-                <YAxis domain={yDomain} />
+                <CartesianGrid
+                    strokeDasharray="3 3"
+                    horizontalCoordinatesGenerator={(props) => [
+                        props.height * 0.078,
+                        props.height * 0.1925,
+                        props.height * 0.3042,
+                        props.height * 0.415,
+                        props.height * 0.525,
+                        props.height * 0.6375,
+                        props.height * 0.752,
+                    ]}
+                />
+                <XAxis label="Date" dataKey="datetime" />
+                <YAxis
+                    label="USD"
+                    domain={[minChange, maxChange]}
+                    ticks={YValues}
+                />
                 <Tooltip />
                 <Legend />
                 <Line
@@ -55,6 +75,12 @@ export default function Chart({ graphData }) {
                 />
                 <Line type="monotone" dataKey="high" stroke="#82ca9d" />
                 <Line type="monotone" dataKey="low" stroke="#FF0000" />
+                <Layer>
+                    <CartesianGrid
+                        strokeDasharray="3 3"
+                        horizontalCoordinatesGenerator={() => YValues}
+                    />
+                </Layer>
             </LineChart>
         </ResponsiveContainer>
     );
