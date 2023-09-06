@@ -17,19 +17,20 @@ const NewsArticle = styled.li`
     box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.4);
     max-width: 30%;
     padding-bottom: 20px;
-    border-bottom-left-radius: 25px;
-    border-bottom-right-radius: 25px;
+    border-radius: 0 0 25px 25px;
     text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     border: solid 1px #92cd86;
+    background-color: #474747;
 `;
 
 const ArticleWrapper = styled.div`
     display: Flex;
     flex-direction: column;
     padding: 0.5rem;
+    background-color: #474747;
 `;
 
 const ArticleImage = styled.img`
@@ -44,6 +45,7 @@ const DateStyle = styled.div`
     justify-content: flex-end;
     border-radius: 50%;
     padding-right: 1rem;
+    background-color: #474747;
 `;
 
 function HomeContainer() {
@@ -73,13 +75,22 @@ function HomeContainer() {
                                 style={{
                                     borderBottom: '1px solid grey',
                                     paddingBottom: '1rem',
+                                    backgroundColor: '#474747',
                                 }}
                             >
                                 {item.headline}
                             </h2>
-                            <h4>{item.summary}</h4>
-                            <h5>Source: {item.source}</h5>
-                            <a href={item.url} target="_blank">
+                            <h4 style={{ backgroundColor: '#474747' }}>
+                                {item.summary}
+                            </h4>
+                            <h5 style={{ backgroundColor: '#474747' }}>
+                                Source: {item.source}
+                            </h5>
+                            <a
+                                style={{ backgroundColor: '#474747' }}
+                                href={item.url}
+                                target="_blank"
+                            >
                                 More Info
                             </a>
                         </ArticleWrapper>
