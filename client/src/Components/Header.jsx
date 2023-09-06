@@ -6,32 +6,7 @@ import SearchResultsList from '../Components/SearchBar/SearchResultsList';
 import { Link } from 'react-router-dom';
 import useWebSocket from 'react-use-websocket';
 import { apiKey } from '../api-keys/apiKey';
-
-const NavBar = styled.nav`
-    list-style: none;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    min-height: 2rem;
-    padding-top: 2rem;
-    width: 70%;
-`;
-
-const HeaderWrapper = styled.div`
-    display: flex;
-    flex-flow: column;
-    align-items: center;
-    margin-bottom: 5rem;
-    position: relative;
-`;
-
-const Li = styled.li`
-    background-color: #252525;
-    font-weight: bold;
-    font-size: larger;
-    padding: 5px 20px;
-    border-radius: 10%;
-`;
+import { NavBar, HeaderWrapper, Li } from './Styles/HeaderStyles';
 
 function Header() {
     const [stockData, setStockData] = useState([]);
