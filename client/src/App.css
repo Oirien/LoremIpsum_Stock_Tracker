@@ -24,4 +24,24 @@
     text-decoration: none;
 }
 
-
+.up {
+    border:3px solid green;
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+  }
+  
+  .down {
+    border:3px solid red;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+  }
+  .arrow {
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+  }
+  .rectangle {
+    height: 5px;
+    width: 10px;
+    background-color: white;
+  }
