@@ -4,6 +4,7 @@ import { useQuery } from 'react-query';
 import styled from 'styled-components';
 import axios from 'axios';
 import { apiKey } from '../api-keys/apiKey';
+import Chart from './StockChart';
 
 const StocksWrapper = styled.div`
     border: 1px solid red;
@@ -111,7 +112,9 @@ function Stock() {
                     </SpanStyle>
                 </StockInformation>
 
-                <GraphSection>Stock Graph</GraphSection>
+                <GraphSection>
+                    <Chart graphData={graphData} />
+                </GraphSection>
             </StocksWrapper>
         </>
     );
