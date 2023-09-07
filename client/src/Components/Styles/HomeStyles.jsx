@@ -67,6 +67,10 @@ export const HeroWrapper = styled.div`
     align-items: center;
     padding: 3rem;
     margin-bottom: 10rem;
+    @media all and (max-width: 1280px) and (min-width: 700px) {
+        padding: 0;
+        margin-bottom: 2.5rem;
+    }
 `;
 
 export const HeroImg = styled.img`
