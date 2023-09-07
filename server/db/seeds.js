@@ -3,6 +3,9 @@ db.users.drop();
 
 db.users.insertOne({
     username: 'big_jimmy',
+    email:"slim_jim1973@yahoo.com",
+    billing_address: "92 Cramond Road, Edinburgh",
+    phone: "07455555555",
     wallet: 20000,
     lifetime_spend: 2000,
     lifetime_profit: 0,
