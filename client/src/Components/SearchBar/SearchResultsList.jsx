@@ -1,7 +1,8 @@
+/* eslint-disable react/prop-types */
 import React, { useEffect, useRef } from 'react';
 import SearchResult from './SearchResult';
 
-const SearchResultsList = ({ searchBar, setSearchBar }) => {
+const SearchResultsList = ({ searchBar, setSearchBar, setSearchBarInput }) => {
     useEffect(() => {
         document.addEventListener('click', handleEmptySearchResults, true);
     }, []);
@@ -14,6 +15,7 @@ const SearchResultsList = ({ searchBar, setSearchBar }) => {
                 console.log('Clicked out');
             } else {
                 setSearchBar([]);
+                setSearchBarInput('');
             }
         } else {
             console.log('clicked in');

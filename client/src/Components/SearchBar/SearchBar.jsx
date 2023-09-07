@@ -1,7 +1,8 @@
+/* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 
-const SearchBar = ({ setSearchBar }) => {
-    const [input, setInput] = useState('');
+const SearchBar = ({ setSearchBar, searchBarInput, setSearchBarInput }) => {
+    // const [input, setInput] = useState('');
 
     const fetchData = (value) => {
         value.length > 0
@@ -12,7 +13,8 @@ const SearchBar = ({ setSearchBar }) => {
     };
 
     const handleInput = (value) => {
-        setInput(value);
+        //setInput(value);
+        setSearchBarInput(value);
         fetchData(value);
     };
 
@@ -21,7 +23,8 @@ const SearchBar = ({ setSearchBar }) => {
             <input
                 type="text"
                 placeholder="Type to search..."
-                value={input}
+                // value={input}
+                value={searchBarInput}
                 onChange={(e) => handleInput(e.target.value)}
             />
         </div>
