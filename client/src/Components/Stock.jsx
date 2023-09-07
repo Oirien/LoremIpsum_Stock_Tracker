@@ -4,6 +4,7 @@ import { useQuery } from 'react-query';
 import styled from 'styled-components';
 import axios from 'axios';
 import { apiKey } from '../api-keys/apiKey';
+import { useOutletContext } from 'react-router-dom';
 import Chart from './StockChart';
 import {
     StocksWrapper,
@@ -13,7 +14,10 @@ import {
 } from './Styles/StockStyles';
 
 function Stock() {
+    const [stocksBought, setStocksBought] = useState('');
+    const [stocksSold, setStocksSold] = useState('');
     const { symbol } = useParams();
+    const { userData } = useOutletContext();
 
     const fetchAPIData = async () => {
         const res = await axios.get(
@@ -58,6 +62,29 @@ function Stock() {
         return <div>Error fetching API data. Please try again later.</div>;
     }
 
+    const handleBuyStocks = (e) => {
+        e.preventDefault();
+
+        // console.log(stocksBought);
+        // console.log(typeof stocksBought);
+        setStocksBought('');
+    };
+
+    const handleSellStocks = (e) => {
+        e.preventDefault();
+
+        // console.log(stocksSold);
+        // console.log(typeof stocksSold);
+
+        setStocksSold('');
+    };
+
+    const maxSell = userData[0].stocks.filter(
+        (stock) => stock.symbol === stockIndividualData.symbol,
+    );
+    const maxSellAmount = maxSell[0].number_of_stocks_owned;
+    console.log(maxSellAmount);
+
     return (
         <>
             <StocksWrapper>
@@ -92,6 +119,49 @@ function Stock() {
                     <Chart graphData={graphData} />
                 </GraphSection>
             </StocksWrapper>
+
+            <div>
+                <span>Current Price: {stockIndividualData.close}$</span>
+                <div>
+                    <form onSubmit={handleBuyStocks}>
+                        <input
+                            type="number"
+                            name="buy-stock"
+                            id="buy-stock"
+                            style={{ minWidth: '50px' }}
+                            min={0}
+                            max={Math.floor(
+                                userData[0].wallet /
+                                    Number(stockIndividualData.close),
+                            )}
+                            required
+                            value={stocksBought}
+                            onChange={(e) =>
+                                setStocksBought(Number(e.target.value))
+                            }
+                        />
+                        <button>Buy</button>
+                    </form>
+                </div>
+                <div>
+                    <form onSubmit={handleSellStocks}>
+                        <input
+                            type="number"
+                            name="sell-stock"
+                            id="sell-stock"
+                            style={{ minWidth: '50px' }}
+                            min={0}
+                            max={maxSellAmount}
+                            required
+                            value={stocksSold}
+                            onChange={(e) =>
+                                setStocksSold(Number(e.target.value))
+                            }
+                        />
+                        <button>Sell</button>
+                    </form>
+                </div>
+            </div>
         </>
     );
 }
