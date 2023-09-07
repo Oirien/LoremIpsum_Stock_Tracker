@@ -65,7 +65,7 @@ function Header() {
 
                 setStockData(updatedData);
                 setPrevPrices(updatedPrevPrices);
-            }, 300);
+            }, 100);
         }
 
         return () => {
