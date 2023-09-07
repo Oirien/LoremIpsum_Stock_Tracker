@@ -60,3 +60,34 @@ export const MoreInfoButton = styled.a`
         background-color: #264b1f;
     }
 `;
+
+export const HeroWrapper = styled.div`
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 3rem;
+    margin-bottom: 10rem;
+`;
+
+export const HeroImg = styled.img`
+    width: 500px;
+    margin-right: 2rem;
+`;
+
+export const HeroRight = styled.div`
+    display: flex;
+    flex-direction: column;
+    border-left: 5px solid #92cd86;
+    padding-left: 2rem;
+`;
+
+export const HeroTitle = styled.h1`
+    font-size: 5rem;
+`;
+export const HeroTitleSpan = styled.span`
+    font-weight: 100;
+`;
+
+export const HeroParaSpan = styled.span`
+    text-decoration: underline;
+`;
