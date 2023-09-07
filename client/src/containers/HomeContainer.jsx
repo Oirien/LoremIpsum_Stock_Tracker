@@ -40,7 +40,7 @@ function HomeContainer() {
                                 style={{
                                     borderBottom: '1px solid grey',
                                     paddingBottom: '1rem',
-
+                                }}
                             >
                                 {item.headline}
                             </h2>
@@ -57,7 +57,6 @@ function HomeContainer() {
                                 Source: {item.source}
                             </h5>
                             <MoreInfoButton href={item.url} target="_blank">
-
                                 More Info
                             </MoreInfoButton>
                         </ArticleWrapper>
