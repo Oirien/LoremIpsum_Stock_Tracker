@@ -50,7 +50,7 @@
     margin-right: 15%;
 }
 
-@media all and (max-width: 1280px) and (min-width: 700px) {
+@media all and (max-width: 1400px) and (min-width: 700px) {
     .resolution {
         margin-left: 2%;
         margin-right: 2%;

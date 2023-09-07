@@ -69,7 +69,7 @@ export const HiddenComponent = styled.div`
     border-radius: 40px;
     align-self: stretch;
     padding: 2%;
-    max-width: 50%;
+    max-width: 20%;
     height: 50%;
     border: 1px solid #7eda67;
     margin-left: auto;
