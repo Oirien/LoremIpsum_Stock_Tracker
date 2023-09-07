@@ -4,6 +4,7 @@ import App from './App.jsx';
 import HomeContainer from './containers/HomeContainer.jsx';
 import PortfolioContainer from './containers/PortfolioContainer.jsx';
 import SupportContainer from './containers/SupportContainer.jsx';
+import AccountContainer from './containers/AccountContainer.jsx';
 import Stock from './Components/Stock.jsx';
 import StockNotFound from './Components/StockNotFound.jsx';
 import { QueryClient, QueryClientProvider } from 'react-query';
@@ -23,8 +24,12 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                 <Routes>
                     <Route path="/" element={<App />}>
                         <Route index element={<HomeContainer />} />
-                        <Route path="portfolio" element={<PortfolioContainer />}/>
+                        <Route
+                            path="portfolio"
+                            element={<PortfolioContainer />}
+                        />
                         <Route path="support" element={<SupportContainer />} />
+                        <Route path="account" element={<AccountContainer />} />
                         <Route path="stocks" element={<StockNotFound />} />
                         <Route path={'stocks/:symbol'} element={<Stock />} />
                     </Route>

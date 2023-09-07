@@ -112,7 +112,7 @@ function Header({ wallet }) {
                     <Link to="/support"> Support </Link>
                 </Li>
                 <Li>
-                    <Link to="/stocks"> Account </Link>
+                    <Link to="/account"> Account </Link>
                 </Li>
                 <div>
                     <SearchBar setSearchBar={setSearchBar} />
