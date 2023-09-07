@@ -16,7 +16,7 @@ export const HeaderWrapper = styled.div`
     align-items: center;
     margin-bottom: 5rem;
     position: relative;
-    @media all and (max-width: 1280px) and (min-width: 700px) {
+    @media all and (max-width: 1400px) and (min-width: 500px) {
         margin-bottom: 2.5rem;
     }
 `;
