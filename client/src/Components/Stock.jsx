@@ -72,7 +72,7 @@ function Stock() {
         e.preventDefault();
         setStocksSold('');
     };
-
+    // test
     const maxSell = userData[0].stocks
         .filter((stock) => stock.symbol === stockIndividualData.symbol)
         .map((y) => y.number_of_stocks_owned);
