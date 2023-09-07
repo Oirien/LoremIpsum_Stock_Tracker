@@ -73,15 +73,6 @@ function Stock() {
         setStocksSold('');
     };
 
-    if (
-        userData[0].stocks.map((stock) => {
-            stock.symbol === stockIndividualData.symbol;
-            return stock.number_of_stocks_owned;
-        })
-    ) {
-        console.log('test');
-    }
-
     const maxSell = userData[0].stocks
         .filter((stock) => stock.symbol === stockIndividualData.symbol)
         .map((y) => y.number_of_stocks_owned);
