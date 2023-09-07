@@ -49,14 +49,16 @@ function App() {
     if (!stockData || stockData.length === 0) {
         return <div>No stock data available.</div>;
     }
-    console.log('userData', userData);
+    // console.log('userData', userData);
 
     return (
         <>
             <Header />
+
             <Container>
                 <Outlet context={{ userData: userData }} />
             </Container>
+
         </>
     );
 }
