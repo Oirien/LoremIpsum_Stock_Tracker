@@ -65,16 +65,11 @@ function Stock() {
     const handleBuyStocks = (e) => {
         e.preventDefault();
 
-        // console.log(stocksBought);
-        // console.log(typeof stocksBought);
         setStocksBought('');
     };
 
     const handleSellStocks = (e) => {
         e.preventDefault();
-
-        // console.log(stocksSold);
-        // console.log(typeof stocksSold);
 
         setStocksSold('');
     };
@@ -145,19 +140,21 @@ function Stock() {
                 </div>
                 <div>
                     <form onSubmit={handleSellStocks}>
-                        <input
-                            type="number"
-                            name="sell-stock"
-                            id="sell-stock"
-                            style={{ minWidth: '50px' }}
-                            min={0}
-                            max={maxSellAmount}
-                            required
-                            value={stocksSold}
-                            onChange={(e) =>
-                                setStocksSold(Number(e.target.value))
-                            }
-                        />
+                        {maxSellAmount && (
+                            <input
+                                type="number"
+                                name="sell-stock"
+                                id="sell-stock"
+                                style={{ minWidth: '50px' }}
+                                min={0}
+                                max={maxSellAmount}
+                                required
+                                value={stocksSold}
+                                onChange={(e) =>
+                                    setStocksSold(Number(e.target.value))
+                                }
+                            />
+                        )}
                         <button>Sell</button>
                     </form>
                 </div>
