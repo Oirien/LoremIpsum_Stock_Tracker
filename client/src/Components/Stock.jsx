@@ -145,7 +145,7 @@ function Stock() {
                     </form>
                 </div>
 
-                {maxSell > 1 && (
+                {maxSell > 0 && (
                     <>
                         <div>
                             <form onSubmit={handleSellStocks}>
