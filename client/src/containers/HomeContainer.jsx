@@ -31,6 +31,7 @@ function HomeContainer() {
     console.log(articles);
     return (
         <>
+            <img src="client\src\assets\lorem-Ipsum-Logo.png" />
             <NewsWrapper>
                 {articles.map((item) => (
                     <NewsArticle key={item.id}>

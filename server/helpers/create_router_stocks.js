@@ -7,7 +7,7 @@ const createRouterStocks = function (collection) {
     router.get('/search', (req, res) => {
         console.log(req.query.q);
         collection
-            .find({ name: { $regex: new RegExp(req.query.q, 'i') } })
+            .find({ description: { $regex: new RegExp(req.query.q, 'i') } })
             .limit(10)
             .toArray()
             .then((docs) => res.json(docs))
