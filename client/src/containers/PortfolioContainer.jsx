@@ -10,6 +10,7 @@ import {
     StocksListUl,
     StocksListLi,
     HiddenComponent,
+    StocksListLiText,
 } from '../Components/Styles/PortfolioStyles';
 import { newKey } from '../api-keys/apiKey';
 
@@ -56,7 +57,6 @@ function PortfolioContainer() {
     );
 
     useEffect(() => setApiSpecificStock(apiStockToFind), [specificStock]);
-    console.log(apiSpecificStock);
     return (
         <>
             <PortfolioWrapper>
@@ -86,10 +86,10 @@ function PortfolioContainer() {
                                     className="remove_a_style"
                                     to={`/stocks/${item.ticker}`}
                                 >
-                                    <div>
+                                    <StocksListLiText>
                                         <h3>{item.name}</h3>
                                         <p>{item.ticker}</p>
-                                    </div>
+                                    </StocksListLiText>
                                 </Link>
                             </StocksListLi>
                         );
@@ -110,6 +110,13 @@ function PortfolioContainer() {
                         <br />
                         Stocks owned:{' '}
                         {items[specificStock].number_of_stocks_owned}
+                        <br />
+                        Approximate Value of Stocks Owned:
+                        <br />$
+                        {(
+                            items[specificStock].number_of_stocks_owned *
+                            apiSpecificStock.shareOutstanding
+                        ).toFixed(2)}
                         <br />
                         <img src={apiSpecificStock.logo} />
                     </HiddenComponent>

@@ -26,40 +26,52 @@ export const FilterAreaLi = styled.li`
 export const StocksListUl = styled.ul`
     display: flex;
     flex-flow: row wrap;
-    height: 300px;
+    height: 600px;
     overflow-y: scroll;
     /* border:1px solid red; */
     max-width: 60%;
 `;
 
 export const StocksListLi = styled.li`
-    min-width: 25%;
+    width: 25%;
+    height: 30%;
     /* border:1px solid pink; */
     text-align: center;
-    padding-top: 5px;
+    padding: 0.5rem;
+    border: solid 1px #7eda67;
     background-color: #353535;
-    border-radius: 10%;
+    border-radius: 15px;
     margin: 20px;
     &:hover {
-        background-color: gold;
-        color: black;
-        a {
-            color: black;
-        }
+        box-shadow:
+            2px 2px 5px #7eda6741,
+            -2px -2px 5px #7eda6741,
+            -2px 2px 5px #7eda6741,
+            2px -2px 5px #7eda6741;
     }
 
     a {
         background-color: inherit;
         text-decoration: none;
     }
+    * {
+        background-color: #353535;
+    }
+`;
+export const StocksListLiText = styled.div`
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    border-radius: 25px;
 `;
 
 export const HiddenComponent = styled.div`
-    border-radius: 10%;
+    border-radius: 40px;
     align-self: stretch;
     padding: 2%;
     max-width: 50%;
-    border: 1px solid white;
+    height: 50%;
+    border: 1px solid #7eda67;
     margin-left: auto;
     flex: 1;
     background-color: #474747;
