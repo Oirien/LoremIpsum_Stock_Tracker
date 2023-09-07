@@ -70,15 +70,21 @@ function Stock() {
 
     const handleSellStocks = (e) => {
         e.preventDefault();
-
         setStocksSold('');
     };
 
-    // const maxSell = userData[0].stocks.filter(
-    //     (stock) => stock.symbol === stockIndividualData.symbol,
-    // );
-    // const maxSellAmount = maxSell[0].number_of_stocks_owned;
-    // console.log(maxSellAmount);
+    if (
+        userData[0].stocks.map((stock) => {
+            stock.symbol === stockIndividualData.symbol;
+            return stock.number_of_stocks_owned;
+        })
+    ) {
+        console.log('test');
+    }
+
+    const x = userData[0].stocks
+        .filter((stock) => stock.symbol === stockIndividualData.symbol)
+        .map((y) => y.number_of_stocks_owned);
 
     return (
         <>
@@ -138,25 +144,29 @@ function Stock() {
                         <button>Buy</button>
                     </form>
                 </div>
-                <div>
-                    <form onSubmit={handleSellStocks}>
-                        <input
-                            type="number"
-                            name="sell-stock"
-                            id="sell-stock"
-                            style={{ minWidth: '50px' }}
-                            min={0}
-                            // max={maxSellAmount}
-                            required
-                            value={stocksSold}
-                            onChange={(e) =>
-                                setStocksSold(Number(e.target.value))
-                            }
-                        />
 
-                        <button>Sell</button>
-                    </form>
-                </div>
+                {x > 1 && (
+                    <>
+                        <div>
+                            <form onSubmit={handleSellStocks}>
+                                <input
+                                    type="number"
+                                    name="sell-stock"
+                                    id="sell-stock"
+                                    style={{ minWidth: '50px' }}
+                                    min={0}
+                                    max={x}
+                                    required
+                                    value={stocksSold}
+                                    onChange={(e) =>
+                                        setStocksSold(Number(e.target.value))
+                                    }
+                                />
+                                <button>Sell</button>
+                            </form>
+                        </div>
+                    </>
+                )}
             </div>
         </>
     );
