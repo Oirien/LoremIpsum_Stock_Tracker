@@ -49,8 +49,6 @@ function App() {
         <>
             <Header />
             <Outlet context={{ userData: userData }} />
-
-            {stockData[0].name}
         </>
     );
 }

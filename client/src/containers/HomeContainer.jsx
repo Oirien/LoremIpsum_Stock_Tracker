@@ -7,10 +7,9 @@ import ScrollToTop from 'react-scroll-to-top';
 import {
     NewsWrapper,
     NewsArticle,
-    ArticleImage,
     ArticleWrapper,
+    ArticleImage,
     DateStyle,
-    SourceInfoWrapper,
     MoreInfoButton,
 } from '../Components/Styles/HomeStyles';
 
@@ -26,26 +25,39 @@ function HomeContainer() {
             .then((data) => setNews(data));
     }, []);
 
-    const articles = news.filter((item) => item.headline.includes('stock'));
+    const articles = news
+        .filter((item) => item.headline.includes('stock'))
+        .slice(0, 12);
+    console.log(articles);
     return (
         <>
             <NewsWrapper>
                 {articles.map((item) => (
                     <NewsArticle key={item.id}>
+                        <ArticleImage src={item.image} alt="" />
                         <ArticleWrapper>
-                            <div>
-                                <ArticleImage src={item.image} alt="" />
-                                <h2 style={{ borderBottom: '1px solid grey' }}>
-                                    {item.headline}
-                                </h2>
-                                <p>{item.summary}</p>
-                            </div>
-                            <SourceInfoWrapper>
-                                <MoreInfoButton href={item.url} target="_blank">
-                                    More Info
-                                </MoreInfoButton>
-                                <h5>Source: {item.source}</h5>
-                            </SourceInfoWrapper>
+                            <h2
+                                style={{
+                                    borderBottom: '1px solid grey',
+                                    paddingBottom: '1rem',
+                                }}
+                            >
+                                {item.headline}
+                            </h2>
+                            <h4 style={{ fontWeight: '200' }}>
+                                {item.summary}
+                            </h4>
+                            <h5
+                                style={{
+                                    fontWeight: '300',
+                                    fontStyle: 'italic',
+                                }}
+                            >
+                                Source: {item.source}
+                            </h5>
+                            <MoreInfoButton href={item.url} target="_blank">
+                                More Info
+                            </MoreInfoButton>
                         </ArticleWrapper>
                         <DateStyle>
                             {dayjs().to(dayjs.unix(item.datetime))}
