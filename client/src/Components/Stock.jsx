@@ -128,6 +128,86 @@ function Stock() {
 
     const handleSellStocks = (e) => {
         e.preventDefault();
+
+        const stockSymbol = stockIndividualData.symbol;
+
+        const previousStocksAmount = Number(
+            userData[0].stocks
+                .filter((stock) => stock.symbol === stockIndividualData.symbol)
+                .map((stocks_number) => stocks_number.number_of_stocks_owned),
+        );
+        const newAmountOfStocks = previousStocksAmount - stocksSold;
+
+        const newAmountSpentForStock = Math.round(
+            Number(
+                userData[0].stocks
+                    .filter(
+                        (stock) => stock.symbol === stockIndividualData.symbol,
+                    )
+                    .map((amount) => amount.amount_spent),
+            ) -
+                stocksSold * stockIndividualData.close,
+        );
+
+        const newLifeTimeSpend = Math.round(
+            Number(
+                userData[0].lifetime_spend -
+                    stocksSold * stockIndividualData.close,
+            ),
+        );
+
+        const newWallet = Math.round(
+            Number(userData[0].wallet + stocksSold * stockIndividualData.close),
+        );
+
+        if (newAmountOfStocks > 0) {
+            const newStockData = {
+                symbol: stockSymbol,
+                number_of_stocks_owned: newAmountOfStocks,
+                amount_spent: newAmountSpentForStock,
+            };
+
+            const newStocks = [
+                ...userData[0].stocks.filter(
+                    (stock) => stock.symbol !== stockSymbol,
+                ),
+                newStockData,
+            ];
+
+            const config = {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    stocks: newStocks,
+                    lifetime_spend: newLifeTimeSpend,
+                    wallet: newWallet,
+                }),
+            };
+            fetch(`http://localhost:9000/api/users/${userData[0]._id}`, config)
+                .then((res) => res.json())
+                .then((data) => data);
+        } else {
+            const newStocks = [
+                ...userData[0].stocks.filter(
+                    (stock) => stock.symbol !== stockSymbol,
+                ),
+            ];
+            const config = {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    stocks: newStocks,
+                    lifetime_spend: newLifeTimeSpend,
+                    wallet: newWallet,
+                }),
+            };
+            fetch(`http://localhost:9000/api/users/${userData[0]._id}`, config)
+                .then((res) => res.json())
+                .then((data) => data);
+        }
+
+        console.log(newAmountSpentForStock);
+
         setStocksSold('');
     };
 
