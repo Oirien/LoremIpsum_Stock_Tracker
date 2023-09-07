@@ -8,7 +8,7 @@ import useWebSocket from 'react-use-websocket';
 import { apiKey } from '../api-keys/apiKey';
 import { NavBar, HeaderWrapper, Li } from './Styles/HeaderStyles';
 
-function Header() {
+function Header({ wallet }) {
     const [stockData, setStockData] = useState([]);
     const [searchBar, setSearchBar] = useState({});
     const [prevPrices, setPrevPrices] = useState({});
@@ -112,7 +112,7 @@ function Header() {
                     <Link to="/support"> Support </Link>
                 </Li>
                 <Li>
-                    <Link to="/stocks"> Stocks </Link>
+                    <Link to="/stocks"> Account </Link>
                 </Li>
                 <div>
                     <SearchBar setSearchBar={setSearchBar} />
@@ -122,6 +122,15 @@ function Header() {
                             setSearchBar={setSearchBar}
                         />
                     )}
+                </div>
+                <div>
+                    Wallet:{' '}
+                    <span style={{ color: 'green' }}>
+                        {wallet
+                            .toString()
+                            .replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')}
+                        $
+                    </span>{' '}
                 </div>
             </NavBar>
         </HeaderWrapper>
