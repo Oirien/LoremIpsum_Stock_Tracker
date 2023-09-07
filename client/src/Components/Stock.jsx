@@ -82,7 +82,7 @@ function Stock() {
         console.log('test');
     }
 
-    const x = userData[0].stocks
+    const maxSell = userData[0].stocks
         .filter((stock) => stock.symbol === stockIndividualData.symbol)
         .map((y) => y.number_of_stocks_owned);
 
@@ -145,7 +145,7 @@ function Stock() {
                     </form>
                 </div>
 
-                {x > 1 && (
+                {maxSell > 1 && (
                     <>
                         <div>
                             <form onSubmit={handleSellStocks}>
@@ -155,7 +155,7 @@ function Stock() {
                                     id="sell-stock"
                                     style={{ minWidth: '50px' }}
                                     min={0}
-                                    max={x}
+                                    max={maxSell}
                                     required
                                     value={stocksSold}
                                     onChange={(e) =>
