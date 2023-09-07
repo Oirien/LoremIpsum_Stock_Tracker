@@ -51,12 +51,19 @@ function App() {
     }
     console.log('userData', userData);
 
+    const stockCallArray = userData[0].stocks.map((stock) => stock.symbol);
+
     return (
         <>
             <Header wallet={userData[0].wallet} />
 
             <Container className="resolution">
-                <Outlet context={{ userData: userData }} />
+                <Outlet
+                    context={{
+                        userData: userData,
+                        stockCallArray: stockCallArray,
+                    }}
+                />
             </Container>
         </>
     );

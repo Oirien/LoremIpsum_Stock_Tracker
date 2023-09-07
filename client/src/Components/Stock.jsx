@@ -65,25 +65,20 @@ function Stock() {
     const handleBuyStocks = (e) => {
         e.preventDefault();
 
-        // console.log(stocksBought);
-        // console.log(typeof stocksBought);
         setStocksBought('');
     };
 
     const handleSellStocks = (e) => {
         e.preventDefault();
 
-        // console.log(stocksSold);
-        // console.log(typeof stocksSold);
-
         setStocksSold('');
     };
 
-    const maxSell = userData[0].stocks.filter(
-        (stock) => stock.symbol === stockIndividualData.symbol,
-    );
-    const maxSellAmount = maxSell[0].number_of_stocks_owned;
-    console.log(maxSellAmount);
+    // const maxSell = userData[0].stocks.filter(
+    //     (stock) => stock.symbol === stockIndividualData.symbol,
+    // );
+    // const maxSellAmount = maxSell[0].number_of_stocks_owned;
+    // console.log(maxSellAmount);
 
     return (
         <>
@@ -151,13 +146,14 @@ function Stock() {
                             id="sell-stock"
                             style={{ minWidth: '50px' }}
                             min={0}
-                            max={maxSellAmount}
+                            // max={maxSellAmount}
                             required
                             value={stocksSold}
                             onChange={(e) =>
                                 setStocksSold(Number(e.target.value))
                             }
                         />
+
                         <button>Sell</button>
                     </form>
                 </div>
