@@ -49,16 +49,15 @@ function App() {
     if (!stockData || stockData.length === 0) {
         return <div>No stock data available.</div>;
     }
-    // console.log('userData', userData);
+    console.log('userData', userData);
 
     return (
         <>
-            <Header />
+            <Header wallet={userData[0].wallet} />
 
             <Container>
                 <Outlet context={{ userData: userData }} />
             </Container>
-
         </>
     );
 }
