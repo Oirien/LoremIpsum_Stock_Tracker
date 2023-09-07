@@ -65,6 +65,64 @@ function Stock() {
     const handleBuyStocks = (e) => {
         e.preventDefault();
 
+        const stockSymbol = stockIndividualData.symbol;
+
+        const previousStocksAmount = Number(
+            userData[0].stocks
+                .filter((stock) => stock.symbol === stockIndividualData.symbol)
+                .map((stocks_number) => stocks_number.number_of_stocks_owned),
+        );
+        const newAmountOfStocks = stocksBought + previousStocksAmount;
+
+        const newAmountSpentForStock = Math.round(
+            stocksBought * stockIndividualData.close +
+                Number(
+                    userData[0].stocks
+                        .filter(
+                            (stock) =>
+                                stock.symbol === stockIndividualData.symbol,
+                        )
+                        .map((amount) => amount.amount_spent),
+                ),
+        );
+
+        const newStockData = {
+            symbol: stockSymbol,
+            number_of_stocks_owned: newAmountOfStocks,
+            amount_spent: newAmountSpentForStock,
+        };
+
+        const newStocks = [
+            ...userData[0].stocks.filter(
+                (stock) => stock.symbol !== stockSymbol,
+            ),
+            newStockData,
+        ];
+
+        const newLifeTimeSpend = Math.round(
+            stocksBought * stockIndividualData.close +
+                userData[0].lifetime_spend,
+        );
+
+        const newWallet = Math.round(
+            userData[0].wallet - stocksBought * stockIndividualData.close,
+        );
+
+        const config = {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                stocks: newStocks,
+                lifetime_spend: newLifeTimeSpend,
+                wallet: newWallet,
+            }),
+        };
+
+        console.log(newStocks);
+        fetch(`http://localhost:9000/api/users/${userData[0]._id}`, config)
+            .then((res) => res.json())
+            .then((data) => data);
+
         setStocksBought('');
     };
 
@@ -72,11 +130,13 @@ function Stock() {
         e.preventDefault();
         setStocksSold('');
     };
-    // test
+
     const maxSell = userData[0].stocks
         .filter((stock) => stock.symbol === stockIndividualData.symbol)
         .map((y) => y.number_of_stocks_owned);
-
+    const maxBuy = Math.floor(
+        userData[0].wallet / Number(stockIndividualData.close),
+    );
     return (
         <>
             <StocksWrapper>
@@ -122,10 +182,7 @@ function Stock() {
                             id="buy-stock"
                             style={{ minWidth: '50px' }}
                             min={0}
-                            max={Math.floor(
-                                userData[0].wallet /
-                                    Number(stockIndividualData.close),
-                            )}
+                            max={maxBuy}
                             required
                             value={stocksBought}
                             onChange={(e) =>
