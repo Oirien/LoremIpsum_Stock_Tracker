@@ -43,7 +43,7 @@ const DateStyle = styled.div`
     /* border: 1px solid white; */
     display: flex;
     justify-content: flex-end;
-    border-radius: 50%;
+    border-radius: 25px;
     padding-right: 1rem;
     background-color: #474747;
 `;
