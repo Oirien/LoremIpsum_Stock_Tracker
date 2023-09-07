@@ -74,11 +74,11 @@ function Stock() {
         setStocksSold('');
     };
 
-    const maxSell = userData[0].stocks.filter(
-        (stock) => stock.symbol === stockIndividualData.symbol,
-    );
-    const maxSellAmount = maxSell[0].number_of_stocks_owned;
-    console.log(maxSellAmount);
+    // const maxSell = userData[0].stocks.filter(
+    //     (stock) => stock.symbol === stockIndividualData.symbol,
+    // );
+    // const maxSellAmount = maxSell[0].number_of_stocks_owned;
+    // console.log(maxSellAmount);
 
     return (
         <>
@@ -140,21 +140,20 @@ function Stock() {
                 </div>
                 <div>
                     <form onSubmit={handleSellStocks}>
-                        {maxSellAmount && (
-                            <input
-                                type="number"
-                                name="sell-stock"
-                                id="sell-stock"
-                                style={{ minWidth: '50px' }}
-                                min={0}
-                                max={maxSellAmount}
-                                required
-                                value={stocksSold}
-                                onChange={(e) =>
-                                    setStocksSold(Number(e.target.value))
-                                }
-                            />
-                        )}
+                        <input
+                            type="number"
+                            name="sell-stock"
+                            id="sell-stock"
+                            style={{ minWidth: '50px' }}
+                            min={0}
+                            // max={maxSellAmount}
+                            required
+                            value={stocksSold}
+                            onChange={(e) =>
+                                setStocksSold(Number(e.target.value))
+                            }
+                        />
+
                         <button>Sell</button>
                     </form>
                 </div>
