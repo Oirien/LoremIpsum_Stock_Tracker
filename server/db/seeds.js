@@ -11,44 +11,44 @@ db.users.insertOne({
     lifetime_profit: 0,
     stocks: [
         {
-            symbol: 'AA',
+            symbol: 'AAPL',
             number_of_stocks_owned: 20,
             amount_spent: 2000,
         },
         {
-            symbol: 'AAC',
+            symbol: 'MSFT',
             number_of_stocks_owned: 10,
-            amount_spent: 700,
+            amount_spent: 2000,
         },
         {
-            symbol: 'AAIC',
+            symbol: 'GOOGL',
             number_of_stocks_owned: 5,
-            amount_spent: 1200,
+            amount_spent: 4000,
         },
         {
-            symbol: 'AAMC',
+            symbol: 'META',
             number_of_stocks_owned: 20,
-            amount_spent: 300,
+            amount_spent: 5000,
         },
         {
-            symbol: 'BC',
+            symbol: 'AMZN',
             number_of_stocks_owned: 3,
-            amount_spent: 1200,
+            amount_spent: 560,
         },
         {
-            symbol: 'BLCO',
+            symbol: 'NVDA',
             number_of_stocks_owned: 6,
-            amount_spent: 200,
+            amount_spent: 2200,
         },
         {
             symbol: 'CF',
             number_of_stocks_owned: 30,
-            amount_spent: 100,
+            amount_spent: 1200,
         },
         {
             symbol: 'CIA',
             number_of_stocks_owned: 10,
-            amount_spent: 600,
+            amount_spent: 2000,
         },
     ],
 });

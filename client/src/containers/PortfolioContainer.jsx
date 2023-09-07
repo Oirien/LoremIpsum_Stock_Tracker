@@ -12,7 +12,7 @@ import {
     HiddenComponent,
     StocksListLiText,
 } from '../Components/Styles/PortfolioStyles';
-import { newKey } from '../api-keys/apiKey';
+import { newKey, apiKey } from '../api-keys/apiKey';
 
 function PortfolioContainer() {
     const [isShown, setIsShown] = useState(false);
@@ -20,7 +20,9 @@ function PortfolioContainer() {
     const { stockCallArray, userData } = useOutletContext();
     const [items, setItems] = useState([]);
     const [stockData, setStockData] = useState([]);
+    const [stockPrice, setStockPrice] = useState([]);
     const [apiSpecificStock, setApiSpecificStock] = useState(null);
+    const [apiSpecificStockPrice, setApiSpecificStockPrice] = useState(null);
     const allStocks = userData[0].stocks.map((stock) => {
         return stock;
     });
@@ -52,11 +54,38 @@ function PortfolioContainer() {
         fetchAllStockData();
     }, []);
 
+    useEffect(() => {
+        const fetchStockData = async (symbol) => {
+            try {
+                const res = await fetch(
+                    `https://api.twelvedata.com/price?symbol=${symbol}&apikey=${apiKey}`,
+                );
+                const data = await res.json();
+                return { ...data, symbol: symbol };
+            } catch (error) {
+                console.error(`Error fetching data for ${symbol}:`, error);
+                return null;
+            }
+        };
+        const fetchAllStockData = async () => {
+            const responses = await Promise.all(
+                stockCallArray.map((symbol) => fetchStockData(symbol)),
+            );
+            setStockPrice(responses.filter((data) => data !== null));
+        };
+
+        fetchAllStockData();
+    }, []);
+
     const apiStockToFind = stockData.find(
         (stock) => stock.ticker === items[specificStock].symbol,
     );
+    const apiPriceToFind = stockPrice.find(
+        (stock) => stock.symbol === items[specificStock].symbol,
+    );
 
     useEffect(() => setApiSpecificStock(apiStockToFind), [specificStock]);
+    useEffect(() => setApiSpecificStockPrice(apiPriceToFind), [specificStock]);
     return (
         <>
             <PortfolioWrapper>
@@ -115,10 +144,20 @@ function PortfolioContainer() {
                         <br />$
                         {(
                             items[specificStock].number_of_stocks_owned *
-                            apiSpecificStock.shareOutstanding
+                            apiSpecificStockPrice.price
                         ).toFixed(2)}
                         <br />
-                        <img src={apiSpecificStock.logo} />
+                        Unrealised Profit/Loss: <br />$
+                        {(
+                            items[specificStock].number_of_stocks_owned *
+                                apiSpecificStockPrice.price -
+                            items[specificStock].amount_spent
+                        ).toFixed(2)}
+                        <br />
+                        <img
+                            src={apiSpecificStock.logo}
+                            style={{ borderRadius: '35px' }}
+                        />
                     </HiddenComponent>
                 )}
             </PortfolioWrapper>
