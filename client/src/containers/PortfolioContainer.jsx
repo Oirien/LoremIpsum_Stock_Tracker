@@ -96,16 +96,22 @@ function PortfolioContainer() {
                     })}
                 </StocksListUl>
 
-                {isShown && (
+                {isShown && apiSpecificStock && (
                     <HiddenComponent>
                         Stock Name: {apiSpecificStock.name}
                         <br />
                         Stock Symbol: {items[specificStock].symbol}
                         <br />
+                        Company Expertise: {apiSpecificStock.finnhubIndustry}
+                        <br />
+                        Company Website: {apiSpecificStock.weburl}
+                        <br />
                         Amount Spent: {items[specificStock].amount_spent}${' '}
                         <br />
                         Stocks owned:{' '}
                         {items[specificStock].number_of_stocks_owned}
+                        <br />
+                        <img src={apiSpecificStock.logo} />
                     </HiddenComponent>
                 )}
             </PortfolioWrapper>
