@@ -11,7 +11,14 @@ import {
     ArticleImage,
     DateStyle,
     MoreInfoButton,
+    HeroWrapper,
+    HeroImg,
+    HeroRight,
+    HeroTitle,
+    HeroTitleSpan,
+    HeroParaSpan,
 } from '../Components/Styles/HomeStyles';
+import logo from '../assets/lorem-Ipsum-Logo.png';
 
 function HomeContainer() {
     dayjs.extend(relativeTime);
@@ -31,7 +38,18 @@ function HomeContainer() {
     console.log(articles);
     return (
         <>
-            <img src="client\src\assets\lorem-Ipsum-Logo.png" />
+            <HeroWrapper>
+                <HeroImg src={logo} />
+                <HeroRight>
+                    <HeroTitle>
+                        <HeroTitleSpan>Lorem</HeroTitleSpan>Ipsum
+                    </HeroTitle>
+                    <p>
+                        Do you speak pseudo-latin?{' '}
+                        <HeroParaSpan>We do!</HeroParaSpan>
+                    </p>
+                </HeroRight>
+            </HeroWrapper>
             <NewsWrapper>
                 {articles.map((item) => (
                     <NewsArticle key={item.id}>
