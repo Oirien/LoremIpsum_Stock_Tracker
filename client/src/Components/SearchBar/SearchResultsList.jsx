@@ -10,15 +10,17 @@ const SearchResultsList = ({ searchBar, setSearchBar, setSearchBarInput }) => {
     const refOne = useRef(null);
 
     const handleEmptySearchResults = (e) => {
-        if (!refOne.current.contains(e.target)) {
-            if (searchBar.length <= 0) {
-                console.log('Clicked out');
+        if (refOne.current) {
+            if (!refOne.current.contains(e.target)) {
+                if (searchBar.length <= 0) {
+                    console.log('Clicked out');
+                } else {
+                    setSearchBar([]);
+                    setSearchBarInput('');
+                }
             } else {
-                setSearchBar([]);
-                setSearchBarInput('');
+                console.log('clicked in');
             }
-        } else {
-            console.log('clicked in');
         }
     };
 
