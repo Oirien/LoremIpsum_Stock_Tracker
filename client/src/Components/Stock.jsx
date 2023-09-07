@@ -17,14 +17,14 @@ function Stock() {
 
     const fetchAPIData = async () => {
         const res = await axios.get(
-            `https://api.twelvedata.com/quote?symbol=${symbol}&exchange=NYSE&apikey=${apiKey}`,
+            `https://api.twelvedata.com/quote?symbol=${symbol}&apikey=${apiKey}`,
         );
         return res.data;
     };
 
     const fetchGraphData = async () => {
         const res = await axios.get(
-            `https://api.twelvedata.com/time_series?interval=1day&symbol=${symbol}&dp=3&exchange=NYSE&apikey=${apiKey}`,
+            `https://api.twelvedata.com/time_series?interval=1day&symbol=${symbol}&dp=3&apikey=${apiKey}`,
         );
         return res.data;
     };
