@@ -11,6 +11,7 @@ import { NavBar, HeaderWrapper, Li } from './Styles/HeaderStyles';
 function Header({ wallet }) {
     const [stockData, setStockData] = useState([]);
     const [searchBar, setSearchBar] = useState({});
+    const [searchBarInput, setSearchBarInput] = useState('');
     const [prevPrices, setPrevPrices] = useState({});
     const socketUrl = `wss://ws.twelvedata.com/v1/quotes/price?apikey=${apiKey}`;
     const initialMessage = {
@@ -115,11 +116,16 @@ function Header({ wallet }) {
                     <Link to="/account"> Account </Link>
                 </Li>
                 <div>
-                    <SearchBar setSearchBar={setSearchBar} />
+                    <SearchBar
+                        setSearchBar={setSearchBar}
+                        searchBarInput={searchBarInput}
+                        setSearchBarInput={setSearchBarInput}
+                    />
                     {searchBar && searchBar.length > 0 && (
                         <SearchResultsList
                             searchBar={searchBar}
                             setSearchBar={setSearchBar}
+                            setSearchBarInput={setSearchBarInput}
                         />
                     )}
                 </div>
