@@ -16,8 +16,8 @@ const fetchAPIData = async () => {
 };
 
 const Container = styled.div`
-    margin-left: 15%;
-    margin-right: 15%;
+    /* margin-left: 15%;
+    margin-right: 15%; */
 `;
 
 function App() {
@@ -55,7 +55,7 @@ function App() {
         <>
             <Header wallet={userData[0].wallet} />
 
-            <Container>
+            <Container className="resolution">
                 <Outlet context={{ userData: userData }} />
             </Container>
         </>
