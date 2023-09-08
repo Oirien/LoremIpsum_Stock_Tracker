@@ -2,9 +2,9 @@ import React from 'react';
 
 const compare = (a, b) => {
     if (a.props.item[a.props.by] > b.props.item[a.props.by]) {
-        return a.props.isAsc ? 1 : -1;
+        return a.props.isasc === 'true' ? 1 : -1;
     } else if (a.props.item[a.props.by] < b.props.item[a.props.by]) {
-        return a.props.isAsc ? -1 : 1;
+        return a.props.isasc === 'true' ? -1 : 1;
     } else {
         return 0;
     }

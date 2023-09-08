@@ -29,7 +29,7 @@ function PortfolioContainer() {
         return stock;
     });
     const [sortBy, setSortBy] = useState('name');
-    const [isAsc, setIsAsc] = useState(true);
+    const [isAsc, setIsAsc] = useState('true');
 
     https: useEffect(() => {
         setItems(allStocks);
@@ -100,7 +100,7 @@ function PortfolioContainer() {
                         <button
                             onClick={() => {
                                 setSortBy('name');
-                                setIsAsc(true);
+                                setIsAsc('true');
                             }}
                         >
                             Name Asc.
@@ -111,7 +111,7 @@ function PortfolioContainer() {
                         <button
                             onClick={() => {
                                 setSortBy('name');
-                                setIsAsc(false);
+                                setIsAsc('false');
                             }}
                         >
                             Name Desc.
@@ -122,7 +122,7 @@ function PortfolioContainer() {
                         <button
                             onClick={() => {
                                 setSortBy('shareOutstanding');
-                                setIsAsc(true);
+                                setIsAsc('true');
                             }}
                         >
                             Price Asc.
@@ -133,7 +133,7 @@ function PortfolioContainer() {
                         <button
                             onClick={() => {
                                 setSortBy('shareOutstanding');
-                                setIsAsc(false);
+                                setIsAsc('false');
                             }}
                         >
                             Price Desc.
@@ -142,14 +142,14 @@ function PortfolioContainer() {
                 </FilterArea>
 
                 <StocksListUl>
-                    <Sort by={sortBy}>
+                    <Sort by={sortBy} isasc={isAsc}>
                         {stockData.map((item, index) => {
                             return (
                                 <StocksListLi
                                     key={index}
                                     item={item}
                                     by={sortBy}
-                                    isAsc={isAsc}
+                                    isasc={isAsc}
                                     onMouseEnter={() => {
                                         setSpecificStock(index);
                                         setIsShown(true);
