@@ -4,11 +4,10 @@ import React from 'react';
 const compare = (a, b) => {
     // you can access the relevant property like this a.props[by]
     // depending whether you are sorting by tilte or year, you can write a compare function here,
-    console.log('a.props.item.name:', a.props.item.name);
-    console.log('b.props.item.name', b.props.item.name);
-    if (a.props.item.name > b.props.item.name) {
+    console.log('a.props.by', a.props.by);
+    if (a.props.item[a.props.by] > b.props.item[a.props.by]) {
         return 1;
-    } else if (a.props.item.name < b.props.item.name) {
+    } else if (a.props.item[a.props.by] < b.props.item[a.props.by]) {
         return -1;
     } else {
         return 0;

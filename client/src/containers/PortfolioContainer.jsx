@@ -28,6 +28,7 @@ function PortfolioContainer() {
     const allStocks = userData[0].stocks.map((stock) => {
         return stock;
     });
+    const [sortBy, setSortBy] = useState('name');
 
     https: useEffect(() => {
         setItems(allStocks);
@@ -95,37 +96,39 @@ function PortfolioContainer() {
                     <FilterAreaLi> Sort By:</FilterAreaLi>
                     <FilterAreaLi>
                         {' '}
-                        <button onClick={() => console.log('Name Asc.')}>
+                        <button onClick={() => setSortBy('name')}>
                             Name Asc.
                         </button>{' '}
                     </FilterAreaLi>
                     <FilterAreaLi>
                         {' '}
-                        <button onClick={() => console.log('Name Desc.')}>
+                        <button onClick={() => setSortBy('name')}>
                             Name Desc.
                         </button>
                     </FilterAreaLi>
                     <FilterAreaLi>
                         {' '}
-                        <button onClick={() => console.log('Price Asc.')}>
+                        <button onClick={() => setSortBy('shareOutstanding')}>
                             Price Asc.
                         </button>
                     </FilterAreaLi>
                     <FilterAreaLi>
                         {' '}
-                        <button onClick={() => console.log('Price Desc.')}>
+                        <button onClick={() => setSortBy('shareOutstanding')}>
                             Price Desc.
                         </button>
                     </FilterAreaLi>
                 </FilterArea>
 
                 <StocksListUl>
-                    <Sort by="name">
+                    <Sort by={sortBy}>
                         {stockData.map((item, index) => {
+                            console.log('item:', item);
                             return (
                                 <StocksListLi
                                     key={index}
                                     item={item}
+                                    by={sortBy}
                                     onMouseEnter={() => {
                                         setSpecificStock(index);
                                         setIsShown(true);
@@ -143,6 +146,7 @@ function PortfolioContainer() {
                                         <StocksListLiText>
                                             <h3>{item.name}</h3>
                                             <p>{item.ticker}</p>
+                                            <p>{item.shareOutstanding}</p>
                                         </StocksListLiText>
                                     </Link>
                                 </StocksListLi>
