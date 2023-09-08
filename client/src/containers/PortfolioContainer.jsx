@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 /* eslint-disable react/prop-types */
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
@@ -13,6 +14,7 @@ import {
     StocksListLiText,
 } from '../Components/Styles/PortfolioStyles';
 import { newKey, apiKey } from '../api-keys/apiKey';
+import Sort from '../Components/Sort';
 
 function PortfolioContainer() {
     const [isShown, setIsShown] = useState(false);
@@ -90,39 +92,63 @@ function PortfolioContainer() {
         <>
             <PortfolioWrapper>
                 <FilterArea>
-                    <FilterAreaLi> Maybe</FilterAreaLi>
-                    <FilterAreaLi> Filter</FilterAreaLi>
-                    <FilterAreaLi> Something</FilterAreaLi>
-                    <FilterAreaLi> Here</FilterAreaLi>
+                    <FilterAreaLi> Sort By:</FilterAreaLi>
+                    <FilterAreaLi>
+                        {' '}
+                        <button onClick={() => console.log('Name Asc.')}>
+                            Name Asc.
+                        </button>{' '}
+                    </FilterAreaLi>
+                    <FilterAreaLi>
+                        {' '}
+                        <button onClick={() => console.log('Name Desc.')}>
+                            Name Desc.
+                        </button>
+                    </FilterAreaLi>
+                    <FilterAreaLi>
+                        {' '}
+                        <button onClick={() => console.log('Price Asc.')}>
+                            Price Asc.
+                        </button>
+                    </FilterAreaLi>
+                    <FilterAreaLi>
+                        {' '}
+                        <button onClick={() => console.log('Price Desc.')}>
+                            Price Desc.
+                        </button>
+                    </FilterAreaLi>
                 </FilterArea>
 
                 <StocksListUl>
-                    {stockData.map((item, index) => {
-                        return (
-                            <StocksListLi
-                                key={index}
-                                onMouseEnter={() => {
-                                    setSpecificStock(index);
-                                    setIsShown(true);
-                                }}
-                                onMouseLeave={() => {
-                                    setSpecificStock(0);
-                                    setIsShown(false);
-                                }}
-                            >
-                                <Link
-                                    // className="search__result"
-                                    className="remove_a_style"
-                                    to={`/stocks/${item.ticker}`}
+                    <Sort by="name">
+                        {stockData.map((item, index) => {
+                            return (
+                                <StocksListLi
+                                    key={index}
+                                    item={item}
+                                    onMouseEnter={() => {
+                                        setSpecificStock(index);
+                                        setIsShown(true);
+                                    }}
+                                    onMouseLeave={() => {
+                                        setSpecificStock(0);
+                                        setIsShown(false);
+                                    }}
                                 >
-                                    <StocksListLiText>
-                                        <h3>{item.name}</h3>
-                                        <p>{item.ticker}</p>
-                                    </StocksListLiText>
-                                </Link>
-                            </StocksListLi>
-                        );
-                    })}
+                                    <Link
+                                        // className="search__result"
+                                        className="remove_a_style"
+                                        to={`/stocks/${item.ticker}`}
+                                    >
+                                        <StocksListLiText>
+                                            <h3>{item.name}</h3>
+                                            <p>{item.ticker}</p>
+                                        </StocksListLiText>
+                                    </Link>
+                                </StocksListLi>
+                            );
+                        })}
+                    </Sort>
                 </StocksListUl>
 
                 {isShown && apiSpecificStock && (
