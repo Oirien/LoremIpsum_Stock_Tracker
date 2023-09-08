@@ -1,11 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useState } from 'react';
-import validator from 'validator';
-
-const FormItemStyle = styled.div`
-    background-color: red;
-`;
 
 function EditAccount({ userOne, queryClient, setEdit }) {
     const [name, setName] = useState(userOne.username);
@@ -46,6 +41,7 @@ function EditAccount({ userOne, queryClient, setEdit }) {
                         type="text"
                         pattern="^[\w]{4,18}$"
                         value={name}
+                        required
                         onChange={(e) => setName(e.target.value)}
                     />
                 </label>
@@ -56,6 +52,7 @@ function EditAccount({ userOne, queryClient, setEdit }) {
                     <input
                         type="text"
                         value={email}
+                        required
                         pattern="[\w%.\-]{1,40}@[\w.]{2,20}.[\w.]"
                         onChange={(e) => {
                             setEmail(e.target.value);
@@ -68,6 +65,7 @@ function EditAccount({ userOne, queryClient, setEdit }) {
                     <input
                         type="text"
                         value={phone}
+                        required
                         pattern="^[1-9]\d{9}$"
                         onChange={(e) => setPhone(e.target.value)}
                     />
@@ -79,10 +77,10 @@ function EditAccount({ userOne, queryClient, setEdit }) {
                         type="text"
                         pattern="^[A-Za-z0-9\s,.]+$"
                         value={billingAddress}
+                        required
                         onChange={(e) => setBillingAddress(e.target.value)}
                     />
                 </label>
-
                 <button>Confirm Edit</button>
             </form>
             <button onClick={() => setEdit(false)}>Cancel Edit</button>
