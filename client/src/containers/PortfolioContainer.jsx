@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 /* eslint-disable react/prop-types */
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
@@ -13,6 +14,7 @@ import {
     StocksListLiText,
 } from '../Components/Styles/PortfolioStyles';
 import { newKey, apiKey } from '../api-keys/apiKey';
+import Sort from '../Components/Sort';
 
 function PortfolioContainer() {
     const [isShown, setIsShown] = useState(false);
@@ -26,6 +28,8 @@ function PortfolioContainer() {
     const allStocks = userData[0].stocks.map((stock) => {
         return stock;
     });
+    const [sortBy, setSortBy] = useState('name');
+    const [isAsc, setIsAsc] = useState('true');
 
     https: useEffect(() => {
         setItems(allStocks);
@@ -90,39 +94,127 @@ function PortfolioContainer() {
         <>
             <PortfolioWrapper>
                 <FilterArea>
-                    <FilterAreaLi> Maybe</FilterAreaLi>
-                    <FilterAreaLi> Filter</FilterAreaLi>
-                    <FilterAreaLi> Something</FilterAreaLi>
-                    <FilterAreaLi> Here</FilterAreaLi>
+                    <FilterAreaLi> Sort By:</FilterAreaLi>
+                    <FilterAreaLi>
+                        {' '}
+                        <button
+                            className={
+                                'action-button ' +
+                                (sortBy === 'name' && isAsc === 'true'
+                                    ? 'action-button-focused'
+                                    : '')
+                            }
+                            onClick={() => {
+                                setSortBy('name');
+                                setIsAsc('true');
+                            }}
+                        >
+                            Name Asc.
+                        </button>{' '}
+                    </FilterAreaLi>
+                    <FilterAreaLi>
+                        {' '}
+                        <button
+                            className={
+                                'action-button ' +
+                                (sortBy === 'name' && isAsc === 'false'
+                                    ? 'action-button-focused'
+                                    : '')
+                            }
+                            onClick={() => {
+                                setSortBy('name');
+                                setIsAsc('false');
+                            }}
+                        >
+                            Name Desc.
+                        </button>
+                    </FilterAreaLi>
+                    <FilterAreaLi>
+                        {' '}
+                        <button
+                            className={
+                                'action-button ' +
+                                (sortBy === 'price' && isAsc === 'true'
+                                    ? 'action-button-focused'
+                                    : '')
+                            }
+                            onClick={() => {
+                                setSortBy('price');
+                                setIsAsc('true');
+                            }}
+                        >
+                            Price Asc.
+                        </button>
+                    </FilterAreaLi>
+                    <FilterAreaLi>
+                        {' '}
+                        <button
+                            className={
+                                'action-button ' +
+                                (sortBy === 'price' && isAsc === 'false'
+                                    ? 'action-button-focused'
+                                    : '')
+                            }
+                            onClick={() => {
+                                setSortBy('price');
+                                setIsAsc('false');
+                            }}
+                        >
+                            Price Desc.
+                        </button>
+                    </FilterAreaLi>
                 </FilterArea>
 
                 <StocksListUl>
-                    {stockData.map((item, index) => {
-                        return (
-                            <StocksListLi
-                                key={index}
-                                onMouseEnter={() => {
-                                    setSpecificStock(index);
-                                    setIsShown(true);
-                                }}
-                                onMouseLeave={() => {
-                                    setSpecificStock(0);
-                                    setIsShown(false);
-                                }}
-                            >
-                                <Link
-                                    // className="search__result"
-                                    className="remove_a_style"
-                                    to={`/stocks/${item.ticker}`}
+                    <Sort by={sortBy} isasc={isAsc}>
+                        {stockData.map((item, index) => {
+                            const defaultPrice = 0;
+                            item.price =
+                                Number(
+                                    stockPrice.find(
+                                        (stock) => stock.symbol === item.ticker,
+                                    )?.price,
+                                ) || defaultPrice;
+
+                            return (
+                                <StocksListLi
+                                    key={index}
+                                    item={item}
+                                    by={sortBy}
+                                    isasc={isAsc}
+                                    onMouseEnter={() => {
+                                        setSpecificStock(index);
+                                        setIsShown(true);
+                                    }}
+                                    onMouseLeave={() => {
+                                        setSpecificStock(0);
+                                        setIsShown(false);
+                                    }}
                                 >
-                                    <StocksListLiText>
-                                        <h3>{item.name}</h3>
-                                        <p>{item.ticker}</p>
-                                    </StocksListLiText>
-                                </Link>
-                            </StocksListLi>
-                        );
-                    })}
+                                    <Link
+                                        // className="search__result"
+                                        className="remove_a_style"
+                                        to={`/stocks/${item.ticker}`}
+                                    >
+                                        <StocksListLiText>
+                                            <h3>{item.name}</h3>
+                                            <p>{item.ticker}</p>
+                                            <p>
+                                                Unit Price:&nbsp;
+                                                {
+                                                    stockPrice.find(
+                                                        (stock) =>
+                                                            stock.symbol ===
+                                                            item.ticker,
+                                                    )?.price
+                                                }
+                                            </p>
+                                        </StocksListLiText>
+                                    </Link>
+                                </StocksListLi>
+                            );
+                        })}
+                    </Sort>
                 </StocksListUl>
 
                 {isShown && apiSpecificStock && (
