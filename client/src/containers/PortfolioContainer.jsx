@@ -29,6 +29,7 @@ function PortfolioContainer() {
         return stock;
     });
     const [sortBy, setSortBy] = useState('name');
+    const [isAsc, setIsAsc] = useState(true);
 
     https: useEffect(() => {
         setItems(allStocks);
@@ -96,25 +97,45 @@ function PortfolioContainer() {
                     <FilterAreaLi> Sort By:</FilterAreaLi>
                     <FilterAreaLi>
                         {' '}
-                        <button onClick={() => setSortBy('name')}>
+                        <button
+                            onClick={() => {
+                                setSortBy('name');
+                                setIsAsc(true);
+                            }}
+                        >
                             Name Asc.
                         </button>{' '}
                     </FilterAreaLi>
                     <FilterAreaLi>
                         {' '}
-                        <button onClick={() => setSortBy('name')}>
+                        <button
+                            onClick={() => {
+                                setSortBy('name');
+                                setIsAsc(false);
+                            }}
+                        >
                             Name Desc.
                         </button>
                     </FilterAreaLi>
                     <FilterAreaLi>
                         {' '}
-                        <button onClick={() => setSortBy('shareOutstanding')}>
+                        <button
+                            onClick={() => {
+                                setSortBy('shareOutstanding');
+                                setIsAsc(true);
+                            }}
+                        >
                             Price Asc.
                         </button>
                     </FilterAreaLi>
                     <FilterAreaLi>
                         {' '}
-                        <button onClick={() => setSortBy('shareOutstanding')}>
+                        <button
+                            onClick={() => {
+                                setSortBy('shareOutstanding');
+                                setIsAsc(false);
+                            }}
+                        >
                             Price Desc.
                         </button>
                     </FilterAreaLi>
@@ -123,12 +144,12 @@ function PortfolioContainer() {
                 <StocksListUl>
                     <Sort by={sortBy}>
                         {stockData.map((item, index) => {
-                            console.log('item:', item);
                             return (
                                 <StocksListLi
                                     key={index}
                                     item={item}
                                     by={sortBy}
+                                    isAsc={isAsc}
                                     onMouseEnter={() => {
                                         setSpecificStock(index);
                                         setIsShown(true);
@@ -146,7 +167,6 @@ function PortfolioContainer() {
                                         <StocksListLiText>
                                             <h3>{item.name}</h3>
                                             <p>{item.ticker}</p>
-                                            <p>{item.shareOutstanding}</p>
                                         </StocksListLiText>
                                     </Link>
                                 </StocksListLi>
