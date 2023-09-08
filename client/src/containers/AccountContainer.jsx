@@ -6,7 +6,9 @@ function AccountContainer() {
     const userOne = userData[0];
     return (
         <>
+
             <h1>Account </h1>
+
             <ul>
                 <li>Username: {userOne.username}</li>
                 <li>Email: {userOne.email}</li>
