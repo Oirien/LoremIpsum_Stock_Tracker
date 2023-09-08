@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import axios from 'axios';
 import { apiKey } from '../api-keys/apiKey';
 import { useOutletContext } from 'react-router-dom';
+import { useQueryClient } from 'react-query';
 import Chart from './StockChart';
 import {
     StocksWrapper,
@@ -18,6 +19,7 @@ function Stock() {
     const [stocksSold, setStocksSold] = useState('');
     const { symbol } = useParams();
     const { userData } = useOutletContext();
+    const queryClient = useQueryClient();
 
     const fetchAPIData = async () => {
         const res = await axios.get(
@@ -121,7 +123,7 @@ function Stock() {
         console.log(newStocks);
         fetch(`http://localhost:9000/api/users/${userData[0]._id}`, config)
             .then((res) => res.json())
-            .then((data) => data);
+            .then((data) => queryClient.invalidateQueries('users'));
 
         setStocksBought('');
     };
@@ -185,7 +187,7 @@ function Stock() {
             };
             fetch(`http://localhost:9000/api/users/${userData[0]._id}`, config)
                 .then((res) => res.json())
-                .then((data) => data);
+                .then((data) => queryClient.invalidateQueries('users'));
         } else {
             const newStocks = [
                 ...userData[0].stocks.filter(
@@ -203,7 +205,7 @@ function Stock() {
             };
             fetch(`http://localhost:9000/api/users/${userData[0]._id}`, config)
                 .then((res) => res.json())
-                .then((data) => data);
+                .then((data) => queryClient.invalidateQueries('users'));
         }
 
         console.log(newAmountSpentForStock);
