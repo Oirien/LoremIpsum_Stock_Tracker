@@ -64,7 +64,7 @@ export const MoreInfoButton = styled.a`
 
 export const HeroWrapper = styled.div`
     display: flex;
-    justify-content: start;
+    justify-content: center;
     align-items: center;
     padding: 3rem;
     margin-bottom: 2.5rem;

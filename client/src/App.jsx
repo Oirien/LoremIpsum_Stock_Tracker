@@ -58,12 +58,14 @@ function App() {
             <Header wallet={userData[0].wallet} />
 
             <Container className="resolution">
-                <Outlet
-                    context={{
-                        userData: userData,
-                        stockCallArray: stockCallArray,
-                    }}
-                />
+                <div className="topSpacing">
+                    <Outlet
+                        context={{
+                            userData: userData,
+                            stockCallArray: stockCallArray,
+                        }}
+                    />
+                </div>
             </Container>
         </>
     );

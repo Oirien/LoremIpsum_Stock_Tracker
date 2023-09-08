@@ -18,10 +18,12 @@ export const HeaderWrapper = styled.div`
     flex-flow: column;
     align-items: center;
     margin-bottom: 5rem;
-    position: relative;
+    position: fixed;
+    top: 0;
     @media all and (max-width: 1400px) and (min-width: 500px) {
         margin-bottom: 2.5rem;
     }
+    z-index: 9999;
 `;
 
 export const Li = styled.li`
@@ -29,7 +31,11 @@ export const Li = styled.li`
     font-weight: bold;
     font-size: larger;
     padding: 5px 20px;
-    border-radius: 10%;
+    margin-left: 5px;
+    border-left: solid 5px transparent;
+    &:hover {
+        border-left: 5px solid #92cd86;
+    }
 `;
 
 export const Banner = styled.div`
