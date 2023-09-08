@@ -6,6 +6,7 @@ export const NewsWrapper = styled.div`
     justify-content: center;
     flex-flow: row wrap;
     gap: 2rem;
+    margin-top: 5rem;
 `;
 
 export const NewsArticle = styled.li`
@@ -66,7 +67,7 @@ export const HeroWrapper = styled.div`
     justify-content: start;
     align-items: center;
     padding: 3rem;
-    margin-bottom: 10rem;
+    margin-bottom: 2.5rem;
     @media all and (max-width: 1400px) and (min-width: 700px) {
         padding: 0;
         margin-bottom: 2.5rem;
@@ -94,4 +95,17 @@ export const HeroTitleSpan = styled.span`
 
 export const HeroParaSpan = styled.span`
     text-decoration: underline;
+`;
+
+export const ArticleSummary = styled.p`
+    max-height: 175px;
+    font-weight: 200;
+    overflow-y: hidden;
+`;
+
+export const ArticleTitle = styled.h3`
+    max-height: 150px;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid whitesmoke;
+    align-self: center;
 `;

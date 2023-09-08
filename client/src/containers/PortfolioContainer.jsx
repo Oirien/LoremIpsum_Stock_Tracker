@@ -27,7 +27,7 @@ function PortfolioContainer() {
         return stock;
     });
 
-    useEffect(() => {
+    https: useEffect(() => {
         setItems(allStocks);
     }, []);
 
