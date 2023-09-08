@@ -161,54 +161,56 @@ function StockBuySell({ stockIndividualData, userData, queryClient }) {
     );
     return (
         <div>
-            <span>Current Price: {stockIndividualData.close}$</span>
-            {maxBuy >= 1 ? (
-                <div>
-                    <form onSubmit={handleBuyStocks}>
-                        <input
-                            type="number"
-                            name="buy-stock"
-                            id="buy-stock"
-                            style={{ minWidth: '50px' }}
-                            min={0}
-                            max={maxBuy}
-                            required
-                            value={stocksBought}
-                            onChange={(e) =>
-                                setStocksBought(Number(e.target.value))
-                            }
-                        />
-                        <button>Buy</button>
-                    </form>
-                </div>
-            ) : (
-                <>
-                    <h3>Not Enough Money</h3>
-                </>
-            )}
-
-            {maxSell > 0 && (
-                <>
+            <div>
+                <p>Current Price: {stockIndividualData.close}$</p>
+                {maxBuy >= 1 ? (
                     <div>
-                        <form onSubmit={handleSellStocks}>
+                        <form onSubmit={handleBuyStocks}>
                             <input
                                 type="number"
-                                name="sell-stock"
-                                id="sell-stock"
+                                name="buy-stock"
+                                id="buy-stock"
                                 style={{ minWidth: '50px' }}
                                 min={0}
-                                max={maxSell}
+                                max={maxBuy}
                                 required
-                                value={stocksSold}
+                                value={stocksBought}
                                 onChange={(e) =>
-                                    setStocksSold(Number(e.target.value))
+                                    setStocksBought(Number(e.target.value))
                                 }
                             />
-                            <button>Sell</button>
+                            <button>Buy</button>
                         </form>
                     </div>
-                </>
-            )}
+                ) : (
+                    <>
+                        <h3>Not Enough Money</h3>
+                    </>
+                )}
+
+                {maxSell > 0 && (
+                    <>
+                        <div>
+                            <form onSubmit={handleSellStocks}>
+                                <input
+                                    type="number"
+                                    name="sell-stock"
+                                    id="sell-stock"
+                                    style={{ minWidth: '50px' }}
+                                    min={0}
+                                    max={maxSell}
+                                    required
+                                    value={stocksSold}
+                                    onChange={(e) =>
+                                        setStocksSold(Number(e.target.value))
+                                    }
+                                />
+                                <button>Sell</button>
+                            </form>
+                        </div>
+                    </>
+                )}
+            </div>
         </div>
     );
 }
