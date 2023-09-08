@@ -14,7 +14,9 @@ function AccountContainer() {
 
     return (
         <>
+
             <h1>Account </h1>
+
             <span>
                 Add Balance{' '}
                 <FaPlusCircle
@@ -48,6 +50,7 @@ function AccountContainer() {
                     setEdit={setEdit}
                 />
             )}
+
         </>
     );
 }
