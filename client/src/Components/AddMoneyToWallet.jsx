@@ -34,6 +34,7 @@ function AddMoneyToWallet({ userOne, queryClient, setAddBalanceStatus }) {
                         <input
                             type="number"
                             min={1}
+                            max={2000000000}
                             value={addBalance}
                             onChange={(e) => setAddBalance(e.target.value)}
                         />
