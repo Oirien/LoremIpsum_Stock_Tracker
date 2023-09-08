@@ -6,13 +6,16 @@ function AccountContainer() {
     const userOne = userData[0];
     return (
         <>
-            <h1>Account Hello</h1>
+
+            <h1>Account </h1>
+
             <ul>
                 <li>Username: {userOne.username}</li>
                 <li>Email: {userOne.email}</li>
                 <li>Billing Address: {userOne.billing_address}</li>
                 <li>Phone: {userOne.phone}</li>
             </ul>
+            {/* test */}
         </>
     );
 }
