@@ -98,6 +98,12 @@ function PortfolioContainer() {
                     <FilterAreaLi>
                         {' '}
                         <button
+                            className={
+                                'action-button ' +
+                                (sortBy === 'name' && isAsc === 'true'
+                                    ? 'action-button-focused'
+                                    : '')
+                            }
                             onClick={() => {
                                 setSortBy('name');
                                 setIsAsc('true');
@@ -109,6 +115,12 @@ function PortfolioContainer() {
                     <FilterAreaLi>
                         {' '}
                         <button
+                            className={
+                                'action-button ' +
+                                (sortBy === 'name' && isAsc === 'false'
+                                    ? 'action-button-focused'
+                                    : '')
+                            }
                             onClick={() => {
                                 setSortBy('name');
                                 setIsAsc('false');
@@ -120,6 +132,13 @@ function PortfolioContainer() {
                     <FilterAreaLi>
                         {' '}
                         <button
+                            className={
+                                'action-button ' +
+                                (sortBy === 'shareOutstanding' &&
+                                isAsc === 'true'
+                                    ? 'action-button-focused'
+                                    : '')
+                            }
                             onClick={() => {
                                 setSortBy('shareOutstanding');
                                 setIsAsc('true');
@@ -131,6 +150,13 @@ function PortfolioContainer() {
                     <FilterAreaLi>
                         {' '}
                         <button
+                            className={
+                                'action-button ' +
+                                (sortBy === 'shareOutstanding' &&
+                                isAsc === 'false'
+                                    ? 'action-button-focused'
+                                    : '')
+                            }
                             onClick={() => {
                                 setSortBy('shareOutstanding');
                                 setIsAsc('false');
