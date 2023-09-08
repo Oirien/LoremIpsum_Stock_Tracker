@@ -11,7 +11,9 @@ function AccountContainer() {
 
     return (
         <>
+
             <h1>Account </h1>
+
             {edit == false ? (
                 <>
                     <ul>
@@ -31,6 +33,7 @@ function AccountContainer() {
                     setEdit={setEdit}
                 />
             )}
+
         </>
     );
 }
