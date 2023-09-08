@@ -3,11 +3,14 @@ import styled from 'styled-components';
 export const NavBar = styled.nav`
     list-style: none;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
     min-height: 2rem;
-    padding-top: 2rem;
-    width: 70%;
+    padding: 1rem;
+    width: 100vw;
+    gap: 1rem;
+    border-bottom: 1px solid whitesmoke;
+    box-shadow: 5px 0px 5px whitesmoke;
 `;
 
 export const HeaderWrapper = styled.div`
@@ -22,9 +25,13 @@ export const HeaderWrapper = styled.div`
 `;
 
 export const Li = styled.li`
-    background-color: #252525;
+    background-color: transparent;
     font-weight: bold;
     font-size: larger;
     padding: 5px 20px;
     border-radius: 10%;
+`;
+
+export const Banner = styled.div`
+    border-bottom: 1px solid whitesmoke;
 `;

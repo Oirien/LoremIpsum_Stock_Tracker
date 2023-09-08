@@ -6,7 +6,7 @@ import SearchResultsList from '../Components/SearchBar/SearchResultsList';
 import { Link } from 'react-router-dom';
 import useWebSocket from 'react-use-websocket';
 import { apiKey } from '../api-keys/apiKey';
-import { NavBar, HeaderWrapper, Li } from './Styles/HeaderStyles';
+import { NavBar, HeaderWrapper, Li, Banner } from './Styles/HeaderStyles';
 
 function Header({ wallet }) {
     const [stockData, setStockData] = useState([]);
@@ -79,27 +79,29 @@ function Header({ wallet }) {
     return (
         <HeaderWrapper>
             {renderMarquee && (
-                <Marquee
-                    pauseOnHover
-                    delay={0}
-                    gradient
-                    gradientColor={[35, 35, 35]}
-                    gradientWidth={50}
-                    style={{ height: 50 }}
-                >
-                    {stockData.map((item, index) => (
-                        <div key={index}>
-                            {item.symbol} |{' '}
-                            {item.price
-                                ? `Price: ${item.price.toFixed(2)} |`
-                                : 'Price: N/A |'}
-                            {item.exchange
-                                ? `Exchange: ${item.exchange}`
-                                : 'Exchange: N/A'}
-                            &emsp;
-                        </div>
-                    ))}
-                </Marquee>
+                <Banner>
+                    <Marquee
+                        pauseOnHover
+                        delay={0}
+                        gradient
+                        gradientColor={[35, 35, 35]}
+                        gradientWidth={50}
+                        style={{ height: 50 }}
+                    >
+                        {stockData.map((item, index) => (
+                            <div key={index}>
+                                {item.symbol} |{' '}
+                                {item.price
+                                    ? `Price: ${item.price.toFixed(2)} |`
+                                    : 'Price: N/A |'}
+                                {item.exchange
+                                    ? `Exchange: ${item.exchange}`
+                                    : 'Exchange: N/A'}
+                                &emsp;
+                            </div>
+                        ))}
+                    </Marquee>
+                </Banner>
             )}
 
             <NavBar>
