@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
+import { InputWrapper, InputText } from '../Styles/SearchBarStyles';
 
 const SearchBar = ({ setSearchBar, searchBarInput, setSearchBarInput }) => {
     const fetchData = (value) => {
@@ -16,14 +17,14 @@ const SearchBar = ({ setSearchBar, searchBarInput, setSearchBarInput }) => {
     };
 
     return (
-        <div>
-            <input
+        <InputWrapper>
+            <InputText
                 type="text"
-                placeholder="Type to search..."
+                placeholder="Type to find stocks..."
                 value={searchBarInput}
                 onChange={(e) => handleInput(e.target.value)}
             />
-        </div>
+        </InputWrapper>
     );
 };
 
