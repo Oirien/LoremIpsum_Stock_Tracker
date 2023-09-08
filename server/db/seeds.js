@@ -7,7 +7,7 @@ db.users.insertOne({
     billing_address: "92 Cramond Road, Edinburgh",
     phone: "07455555555",
     wallet: 20000,
-    lifetime_spend: 2000,
+    lifetime_spend: 19000,
     lifetime_profit: 0,
     stocks: [
         {
