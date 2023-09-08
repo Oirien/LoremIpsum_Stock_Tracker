@@ -3,16 +3,28 @@ import { useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import styled from 'styled-components';
 import axios from 'axios';
-import { apiKey } from '../api-keys/apiKey';
+import { apiKey, newKey } from '../api-keys/apiKey';
 import { useOutletContext } from 'react-router-dom';
 import { useQueryClient } from 'react-query';
 import Chart from './StockChart';
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
 import {
     StocksWrapper,
     StockInformation,
     GraphSection,
     SpanStyle,
 } from './Styles/StockStyles';
+import {
+    NewsWrapper,
+    NewsArticle,
+    ArticleWrapper,
+    ArticleImage,
+    DateStyle,
+    MoreInfoButton,
+    ArticleSummary,
+    ArticleTitle,
+} from './Styles/HomeStyles';
 import StockBuySell from './StockBuySell';
 
 function Stock() {
@@ -49,6 +61,15 @@ function Stock() {
         isLoading: graphLoading,
     } = useQuery(graphQueryKey, fetchGraphData);
 
+    const [news, setNews] = useState([]);
+    useEffect(() => {
+        fetch(
+            `https://finnhub.io/api/v1/company-news?symbol=${symbol}&from=2023-08-01&to=2023-09-08&token=${newKey}`,
+        )
+            .then((res) => res.json())
+            .then((data) => setNews(data));
+    }, []);
+
     if (stockIndividualLoading || graphLoading) {
         return <div>Loading...</div>;
     }
@@ -62,6 +83,10 @@ function Stock() {
         console.error('API Error', graphError);
         return <div>Error fetching API data. Please try again later.</div>;
     }
+    dayjs.extend(relativeTime);
+
+    const articles = news.length >= 12 ? news.slice(0, 12) : news;
+    console.log(articles);
 
     return (
         <>
@@ -103,6 +128,32 @@ function Stock() {
                 userData={userData}
                 queryClient={queryClient}
             ></StockBuySell>
+            <NewsWrapper>
+                {articles.map((item) => (
+                    <NewsArticle key={item.id}>
+                        <ArticleImage src={item.image} alt="" />
+                        <ArticleWrapper>
+                            <ArticleTitle>{item.headline}</ArticleTitle>
+
+                            <ArticleSummary>{item.summary}</ArticleSummary>
+                            <h5
+                                style={{
+                                    fontWeight: '300',
+                                    fontStyle: 'italic',
+                                }}
+                            >
+                                Source: {item.source}
+                            </h5>
+                            <MoreInfoButton href={item.url} target="_blank">
+                                More Info
+                            </MoreInfoButton>
+                        </ArticleWrapper>
+                        <DateStyle>
+                            {dayjs().to(dayjs.unix(item.datetime))}
+                        </DateStyle>
+                    </NewsArticle>
+                ))}
+            </NewsWrapper>
         </>
     );
 }

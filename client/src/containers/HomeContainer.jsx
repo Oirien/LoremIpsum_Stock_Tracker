@@ -17,6 +17,8 @@ import {
     HeroTitle,
     HeroTitleSpan,
     HeroParaSpan,
+    ArticleSummary,
+    ArticleTitle,
 } from '../Components/Styles/HomeStyles';
 import logo from '../assets/lorem-Ipsum-Logo.png';
 
@@ -55,18 +57,9 @@ function HomeContainer() {
                     <NewsArticle key={item.id}>
                         <ArticleImage src={item.image} alt="" />
                         <ArticleWrapper>
-                            <h2
-                                style={{
-                                    borderBottom: '1px solid grey',
-                                    paddingBottom: '1rem',
-                                }}
-                            >
-                                {item.headline}
-                            </h2>
+                            <ArticleTitle>{item.headline}</ArticleTitle>
 
-                            <h4 style={{ fontWeight: '200' }}>
-                                {item.summary}
-                            </h4>
+                            <ArticleSummary>{item.summary}</ArticleSummary>
                             <h5
                                 style={{
                                     fontWeight: '300',
