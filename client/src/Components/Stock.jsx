@@ -26,6 +26,7 @@ import {
     ArticleTitle,
 } from './Styles/HomeStyles';
 import StockBuySell from './StockBuySell';
+import logo from '../assets/lorem-Ipsum-Logo.png';
 
 function Stock() {
     const { symbol } = useParams();
@@ -131,7 +132,12 @@ function Stock() {
             <NewsWrapper>
                 {articles.map((item) => (
                     <NewsArticle key={item.id}>
-                        <ArticleImage src={item.image} alt="" />
+                        {item.image ? (
+                            <ArticleImage src={item.image} alt="" />
+                        ) : (
+                            <ArticleImage src={logo} alt="" />
+                        )}
+
                         <ArticleWrapper>
                             <ArticleTitle>{item.headline}</ArticleTitle>
 

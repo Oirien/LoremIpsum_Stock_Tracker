@@ -11,7 +11,7 @@ export const NewsWrapper = styled.div`
 
 export const NewsArticle = styled.li`
     box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.4);
-    max-width: 30%;
+    width: 30%;
     padding-bottom: 20px;
     border-radius: 0 0 25px 25px;
     text-align: center;

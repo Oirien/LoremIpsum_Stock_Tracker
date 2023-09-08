@@ -1,5 +1,11 @@
 import React from 'react';
 import { useState } from 'react';
+import {
+    BuySellWrapper,
+    CurrentPrice,
+    InputNumber,
+    BuySellButton,
+} from './Styles/StockBuySellStyles';
 
 function StockBuySell({ stockIndividualData, userData, queryClient }) {
     const [stocksBought, setStocksBought] = useState('');
@@ -160,17 +166,19 @@ function StockBuySell({ stockIndividualData, userData, queryClient }) {
         userData[0].wallet / Number(stockIndividualData.close),
     );
     return (
-        <div>
+        <BuySellWrapper>
+            <CurrentPrice>
+                Current Price per Unit:
+                <br />${stockIndividualData.close}
+            </CurrentPrice>
             <div>
-                <p>Current Price: {stockIndividualData.close}$</p>
                 {maxBuy >= 1 ? (
                     <div>
                         <form onSubmit={handleBuyStocks}>
-                            <input
+                            <InputNumber
                                 type="number"
                                 name="buy-stock"
                                 id="buy-stock"
-                                style={{ minWidth: '50px' }}
                                 min={0}
                                 max={maxBuy}
                                 required
@@ -179,7 +187,7 @@ function StockBuySell({ stockIndividualData, userData, queryClient }) {
                                     setStocksBought(Number(e.target.value))
                                 }
                             />
-                            <button>Buy</button>
+                            <BuySellButton>Buy</BuySellButton>
                         </form>
                     </div>
                 ) : (
@@ -192,11 +200,10 @@ function StockBuySell({ stockIndividualData, userData, queryClient }) {
                     <>
                         <div>
                             <form onSubmit={handleSellStocks}>
-                                <input
+                                <InputNumber
                                     type="number"
                                     name="sell-stock"
                                     id="sell-stock"
-                                    style={{ minWidth: '50px' }}
                                     min={0}
                                     max={maxSell}
                                     required
@@ -205,13 +212,13 @@ function StockBuySell({ stockIndividualData, userData, queryClient }) {
                                         setStocksSold(Number(e.target.value))
                                     }
                                 />
-                                <button>Sell</button>
+                                <BuySellButton>Sell</BuySellButton>
                             </form>
                         </div>
                     </>
                 )}
             </div>
-        </div>
+        </BuySellWrapper>
     );
 }
 
