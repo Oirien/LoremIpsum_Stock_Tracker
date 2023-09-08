@@ -1,6 +1,7 @@
 import React from 'react';
 
 const compare = (a, b) => {
+    // console.log('a.props.item:', a.props.item);
     if (a.props.item[a.props.by] > b.props.item[a.props.by]) {
         return a.props.isasc === 'true' ? 1 : -1;
     } else if (a.props.item[a.props.by] < b.props.item[a.props.by]) {

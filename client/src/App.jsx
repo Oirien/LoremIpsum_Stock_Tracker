@@ -49,7 +49,6 @@ function App() {
     if (!stockData || stockData.length === 0) {
         return <div>No stock data available.</div>;
     }
-    console.log('userData', userData);
 
     const stockCallArray = userData[0].stocks.map((stock) => stock.symbol);
 

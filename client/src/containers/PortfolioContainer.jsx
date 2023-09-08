@@ -134,13 +134,12 @@ function PortfolioContainer() {
                         <button
                             className={
                                 'action-button ' +
-                                (sortBy === 'shareOutstanding' &&
-                                isAsc === 'true'
+                                (sortBy === 'price' && isAsc === 'true'
                                     ? 'action-button-focused'
                                     : '')
                             }
                             onClick={() => {
-                                setSortBy('shareOutstanding');
+                                setSortBy('price');
                                 setIsAsc('true');
                             }}
                         >
@@ -152,13 +151,12 @@ function PortfolioContainer() {
                         <button
                             className={
                                 'action-button ' +
-                                (sortBy === 'shareOutstanding' &&
-                                isAsc === 'false'
+                                (sortBy === 'price' && isAsc === 'false'
                                     ? 'action-button-focused'
                                     : '')
                             }
                             onClick={() => {
-                                setSortBy('shareOutstanding');
+                                setSortBy('price');
                                 setIsAsc('false');
                             }}
                         >
@@ -170,6 +168,14 @@ function PortfolioContainer() {
                 <StocksListUl>
                     <Sort by={sortBy} isasc={isAsc}>
                         {stockData.map((item, index) => {
+                            const defaultPrice = 0;
+                            item.price =
+                                Number(
+                                    stockPrice.find(
+                                        (stock) => stock.symbol === item.ticker,
+                                    )?.price,
+                                ) || defaultPrice;
+
                             return (
                                 <StocksListLi
                                     key={index}
@@ -193,6 +199,16 @@ function PortfolioContainer() {
                                         <StocksListLiText>
                                             <h3>{item.name}</h3>
                                             <p>{item.ticker}</p>
+                                            <p>
+                                                Unit Price:&nbsp;
+                                                {
+                                                    stockPrice.find(
+                                                        (stock) =>
+                                                            stock.symbol ===
+                                                            item.ticker,
+                                                    )?.price
+                                                }
+                                            </p>
                                         </StocksListLiText>
                                     </Link>
                                 </StocksListLi>
