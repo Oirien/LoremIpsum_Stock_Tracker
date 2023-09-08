@@ -9,8 +9,8 @@ export const NavBar = styled.nav`
     padding: 1rem;
     width: 100vw;
     gap: 1rem;
-    border-bottom: 1px solid whitesmoke;
-    box-shadow: 5px 0px 5px whitesmoke;
+    border-bottom: 1px solid #92cd86;
+    box-shadow: 5px 0px 5px #92cd86;
 `;
 
 export const HeaderWrapper = styled.div`
@@ -33,5 +33,5 @@ export const Li = styled.li`
 `;
 
 export const Banner = styled.div`
-    border-bottom: 1px solid whitesmoke;
+    border-bottom: 1px solid #92cd86;
 `;
