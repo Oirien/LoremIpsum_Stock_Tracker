@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const PortfolioWrapper = styled.div`
     display: flex;
-    min-height: 100%;
     margin-bottom: 2rem;
 `;
 
@@ -27,6 +26,7 @@ export const StocksListUl = styled.ul`
     display: flex;
     flex-flow: row wrap;
     max-width: 60%;
+    height: fit-content;
 `;
 
 export const StocksListLi = styled.li`
@@ -34,7 +34,7 @@ export const StocksListLi = styled.li`
     justify-content: center;
     align-items: center;
     width: 25%;
-    height: 35%;
+    height: 15em;
     text-align: center;
     padding: 0.5rem;
     border: solid 1px #7eda67;
