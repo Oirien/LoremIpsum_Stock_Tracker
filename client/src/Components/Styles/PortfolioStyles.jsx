@@ -19,7 +19,6 @@ export const FilterArea = styled.div`
 export const FilterAreaLi = styled.li`
     text-align: center;
     margin: 1rem;
-    border-radius: 30%;
 `;
 
 export const StocksListUl = styled.ul`
@@ -34,7 +33,7 @@ export const StocksListLi = styled.li`
     justify-content: center;
     align-items: center;
     width: 25%;
-    height: 15em;
+    height: 10rem;
     text-align: center;
     padding: 0.5rem;
     border: solid 1px #7eda67;
