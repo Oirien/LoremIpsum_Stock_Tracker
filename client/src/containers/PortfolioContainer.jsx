@@ -88,10 +88,36 @@ function PortfolioContainer() {
         (stock) => stock.symbol === items[specificStock].symbol,
     );
 
+    const findTotalValueOfStocks = () => {
+        let totalValue = 0;
+        stockPrice.forEach((priceData) => {
+            const { symbol, price } = priceData;
+            const stockInfoItem = items.find((item) => item.symbol === symbol);
+
+            if (stockInfoItem) {
+                const totalPrice =
+                    parseFloat(price) * stockInfoItem.number_of_stocks_owned;
+                totalValue += totalPrice;
+            }
+        });
+        return Number(totalValue.toFixed(2));
+    };
+
+    const totalValueOfStocks = findTotalValueOfStocks();
+    console.log('Total value of stocks: ', totalValueOfStocks);
+    const test = totalValueOfStocks;
+
     useEffect(() => setApiSpecificStock(apiStockToFind), [specificStock]);
     useEffect(() => setApiSpecificStockPrice(apiPriceToFind), [specificStock]);
     return (
         <>
+            <div style={{ textAlign: 'center' }}>
+                Total Value Of Stocks <br />
+                {totalValueOfStocks
+                    .toString()
+                    .replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')}
+                $
+            </div>
             <PortfolioWrapper>
                 <FilterArea>
                     <FilterAreaLi> Sort By:</FilterAreaLi>
