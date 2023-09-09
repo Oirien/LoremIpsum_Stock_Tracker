@@ -12,7 +12,12 @@ import {
     Li,
     Banner,
     StyledPrice,
+    LogoImg,
+    LiLogo,
+    LogoName,
+    LogoNameSpan,
 } from './Styles/HeaderStyles';
+import logo from '../assets/lorem-Ipsum-Logo.png';
 
 function Header({ wallet }) {
     const stockHardcode = [
@@ -133,6 +138,12 @@ function Header({ wallet }) {
             )}
 
             <NavBar>
+                <LiLogo>
+                    <LogoImg src={logo} />
+                    <LogoName>
+                        <LogoNameSpan>Lorem</LogoNameSpan>Ipsum
+                    </LogoName>
+                </LiLogo>
                 <Li>
                     <Link to="/"> Home </Link>
                 </Li>
@@ -161,7 +172,7 @@ function Header({ wallet }) {
                 </div>
                 <div>
                     Wallet:{' '}
-                    <span style={{ color: 'green' }}>
+                    <span style={{ color: '#92cd86' }}>
                         {wallet
                             .toString()
                             .replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')}

@@ -46,3 +46,28 @@ export const StyledPrice = styled.span`
     transition: 500ms;
     color: ${(props) => props.change};
 `;
+
+export const LogoImg = styled.img`
+    height: 36px;
+    padding: 0px;
+    margin: 0px;
+`;
+
+export const LiLogo = styled.li`
+    padding: 0px;
+    margin: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 0.5rem;
+`;
+
+export const LogoName = styled.h3`
+    padding: 0px;
+    margin: 0px;
+    font-size: 1.5rem;
+`;
+
+export const LogoNameSpan = styled.span`
+    font-weight: 100;
+`;
