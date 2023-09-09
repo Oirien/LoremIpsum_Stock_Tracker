@@ -58,6 +58,7 @@ function Header({ wallet }) {
     const [stockData, setStockData] = useState(stockHardcode);
     const [searchBar, setSearchBar] = useState({});
     const [searchBarInput, setSearchBarInput] = useState('');
+
     const socketUrl = `wss://ws.twelvedata.com/v1/quotes/price?apikey=${apiKey}`;
     const initialMessage = {
         action: 'subscribe',
@@ -65,6 +66,7 @@ function Header({ wallet }) {
             symbols: 'AAPL,QQQ,ABML,EUR/USD,BTC/USD,BT.A:LSE,VFIAX,IXIC',
         },
     };
+
     const { sendJsonMessage, lastJsonMessage } = useWebSocket(socketUrl, {
         onOpen: () => {
             console.log('WebSocket opened');
@@ -73,36 +75,47 @@ function Header({ wallet }) {
         shouldReconnect: (closeEvent) => true,
     });
 
-    useEffect(() => {
-        if (lastJsonMessage) {
-            setStockData((prevStockData) => {
-                const updatedStockData = [...prevStockData];
+    const updateStockData = (message) => {
+        setStockData((prevStockData) => {
+            const updatedStockData = [...prevStockData];
 
-                const index = updatedStockData.findIndex(
-                    (stock) => stock.symbol === lastJsonMessage.symbol,
-                );
+            for (let i = 0; i < updatedStockData.length; i++) {
+                if (updatedStockData[i].symbol === message.symbol) {
+                    const prevPrice = updatedStockData[i].price;
+                    const newPrice = message.price;
 
-                if (index !== -1) {
-                    const prevPrice = updatedStockData[index].price;
-                    const newPrice = lastJsonMessage.price;
-                    const change =
-                        prevPrice < newPrice
-                            ? '#7EDA67'
-                            : prevPrice > newPrice
-                            ? '#FF5950'
-                            : 'whitesmoke';
+                    if (newPrice) {
+                        const change =
+                            prevPrice < newPrice
+                                ? '#7EDA67'
+                                : prevPrice > newPrice
+                                ? '#FF5950'
+                                : 'whitesmoke';
 
-                    updatedStockData[index] = {
-                        ...updatedStockData[index],
-                        price: newPrice,
-                        exchange: lastJsonMessage.exchange,
-                        change: change,
-                    };
+                        updatedStockData[i] = {
+                            ...updatedStockData[i],
+                            price: newPrice,
+                            exchange: message.exchange,
+                            change: change,
+                        };
+                    }
                 }
+            }
 
-                return updatedStockData;
-            });
-        }
+            return updatedStockData;
+        });
+    };
+
+    useEffect(() => {
+        const updateInterval = setInterval(() => {
+            if (lastJsonMessage) {
+                updateStockData(lastJsonMessage);
+            }
+        }, 1000);
+
+        return () => {
+            clearInterval(updateInterval);
+        };
     }, [lastJsonMessage]);
 
     const renderMarquee = stockData.length > 0;
