@@ -104,8 +104,6 @@ function PortfolioContainer() {
     };
 
     const totalValueOfStocks = findTotalValueOfStocks();
-    console.log('Total value of stocks: ', totalValueOfStocks);
-    const test = totalValueOfStocks;
 
     useEffect(() => setApiSpecificStock(apiStockToFind), [specificStock]);
     useEffect(() => setApiSpecificStockPrice(apiPriceToFind), [specificStock]);
