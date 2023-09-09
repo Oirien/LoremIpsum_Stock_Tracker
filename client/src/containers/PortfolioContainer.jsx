@@ -31,7 +31,7 @@ function PortfolioContainer() {
     const [sortBy, setSortBy] = useState('name');
     const [isAsc, setIsAsc] = useState('true');
 
-    https: useEffect(() => {
+    useEffect(() => {
         setItems(allStocks);
     }, []);
 

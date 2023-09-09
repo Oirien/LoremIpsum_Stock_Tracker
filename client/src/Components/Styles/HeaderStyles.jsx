@@ -41,3 +41,8 @@ export const Li = styled.li`
 export const Banner = styled.div`
     border-bottom: 1px solid #92cd86;
 `;
+
+export const StyledPrice = styled.span`
+    transition: 500ms;
+    color: ${(props) => props.change};
+`;
