@@ -5,7 +5,6 @@ const createRouterStocks = function (collection) {
     const router = express.Router();
 
     router.get('/search', (req, res) => {
-        console.log(req.query.q);
         collection
             .find({ description: { $regex: new RegExp(req.query.q, 'i') } })
             .limit(10)

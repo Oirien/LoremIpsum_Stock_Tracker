@@ -6,13 +6,53 @@ import SearchResultsList from '../Components/SearchBar/SearchResultsList';
 import { Link } from 'react-router-dom';
 import useWebSocket from 'react-use-websocket';
 import { apiKey } from '../api-keys/apiKey';
-import { NavBar, HeaderWrapper, Li, Banner } from './Styles/HeaderStyles';
+import {
+    NavBar,
+    HeaderWrapper,
+    Li,
+    Banner,
+    StyledPrice,
+} from './Styles/HeaderStyles';
 
 function Header({ wallet }) {
-    const [stockData, setStockData] = useState([]);
+    const stockHardcode = [
+        {
+            symbol: 'AAPL',
+            price: 0,
+        },
+        {
+            symbol: 'QQQ',
+            price: 0,
+        },
+        {
+            symbol: 'ABML',
+            price: 0,
+        },
+        {
+            symbol: 'EUR/USD',
+            price: 0,
+        },
+        {
+            symbol: 'BTC/USD',
+            price: 0,
+        },
+        {
+            symbol: 'BT.A:LSE',
+            price: 0,
+        },
+        {
+            symbol: 'VFIAX',
+            price: 0,
+        },
+        {
+            symbol: 'IXIC',
+            price: 0,
+        },
+    ];
+
+    const [stockData, setStockData] = useState(stockHardcode);
     const [searchBar, setSearchBar] = useState({});
     const [searchBarInput, setSearchBarInput] = useState('');
-    const [prevPrices, setPrevPrices] = useState({});
     const socketUrl = `wss://ws.twelvedata.com/v1/quotes/price?apikey=${apiKey}`;
     const initialMessage = {
         action: 'subscribe',
@@ -29,50 +69,36 @@ function Header({ wallet }) {
     });
 
     useEffect(() => {
-        let timeout;
-
         if (lastJsonMessage) {
-            timeout = setTimeout(() => {
-                const uniqueSymbols = new Set(
-                    stockData.map((item) => item.symbol),
+            setStockData((prevStockData) => {
+                const updatedStockData = [...prevStockData];
+
+                const index = updatedStockData.findIndex(
+                    (stock) => stock.symbol === lastJsonMessage.symbol,
                 );
 
-                const updatedData = [...stockData];
-                const updatedPrevPrices = { ...prevPrices };
+                if (index !== -1) {
+                    const prevPrice = updatedStockData[index].price;
+                    const newPrice = lastJsonMessage.price;
+                    const change =
+                        prevPrice < newPrice
+                            ? '#7EDA67'
+                            : prevPrice > newPrice
+                            ? '#FF5950'
+                            : 'whitesmoke';
 
-                if (!uniqueSymbols.has(lastJsonMessage.symbol)) {
-                    updatedData.push(lastJsonMessage);
-                    uniqueSymbols.add(lastJsonMessage.symbol);
-                } else {
-                    updatedData.forEach((item) => {
-                        if (item.symbol === lastJsonMessage.symbol) {
-                            if (!updatedPrevPrices[item.symbol]) {
-                                updatedPrevPrices[item.symbol] = {};
-                            }
-
-                            const prevPrice =
-                                updatedPrevPrices[item.symbol].price || 0;
-                            const currentPrice = lastJsonMessage.price;
-                            // DO NOT DELETE
-                            // if (prevPrice !== currentPrice) {
-                            //     console.log(
-                            //         `${item.symbol} price changed from ${prevPrice} to ${currentPrice}`,
-                            //     );
-                            // }
-                            updatedPrevPrices[item.symbol].price = currentPrice;
-                        }
-                    });
+                    updatedStockData[index] = {
+                        ...updatedStockData[index],
+                        price: newPrice,
+                        exchange: lastJsonMessage.exchange,
+                        change: change,
+                    };
                 }
 
-                setStockData(updatedData);
-                setPrevPrices(updatedPrevPrices);
-            }, 100);
+                return updatedStockData;
+            });
         }
-
-        return () => {
-            clearTimeout(timeout);
-        };
-    }, [lastJsonMessage, stockData, prevPrices]);
+    }, [lastJsonMessage]);
 
     const renderMarquee = stockData.length > 0;
 
@@ -91,9 +117,11 @@ function Header({ wallet }) {
                         {stockData.map((item, index) => (
                             <div key={index}>
                                 {item.symbol} |{' '}
-                                {item.price
-                                    ? `Price: ${item.price.toFixed(2)} |`
-                                    : 'Price: N/A |'}
+                                <StyledPrice change={item.change}>
+                                    {item.price
+                                        ? `Price: ${item.price.toFixed(2)} `
+                                        : 'Price: N/A '}
+                                </StyledPrice>
                                 {item.exchange
                                     ? `Exchange: ${item.exchange}`
                                     : 'Exchange: N/A'}
