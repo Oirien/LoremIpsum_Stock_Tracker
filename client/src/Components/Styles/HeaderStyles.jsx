@@ -69,5 +69,5 @@ export const LogoName = styled.h3`
 `;
 
 export const LogoNameSpan = styled.span`
-    font-weight: 100;
+    font-weight: 200;
 `;
