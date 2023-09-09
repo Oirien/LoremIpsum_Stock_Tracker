@@ -34,7 +34,7 @@ export const StocksListLi = styled.li`
     justify-content: center;
     align-items: center;
     width: 25%;
-    height: 20%;
+    height: 35%;
     text-align: center;
     padding: 0.5rem;
     border: solid 1px #7eda67;
