@@ -112,9 +112,9 @@ function PortfolioContainer() {
             <div
                 style={{
                     textAlign: 'start',
-                    paddingLeft: '13rem',
+                    marginLeft: '13rem',
                     borderBottom: '1px solid #92cd86',
-                    display: 'flex',
+                    width: 'max-content',
                 }}
             >
                 <p>
