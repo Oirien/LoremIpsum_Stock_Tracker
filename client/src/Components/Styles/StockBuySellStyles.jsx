@@ -4,7 +4,7 @@ export const BuySellWrapper = styled.div`
     display: flex;
     justify-content: end;
     align-items: center;
-    padding-right: 1rem;
+    padding-right: 10%;
     gap: 1rem;
 `;
 
@@ -29,7 +29,7 @@ export const InputNumber = styled.input`
     font-size: 1rem;
     width: 80px;
     margin: 5px;
-    border-radius: 15px;
+    border-radius: 5px;
     text-align: end;
     color: black;
     &:focus {
@@ -38,12 +38,19 @@ export const InputNumber = styled.input`
 `;
 
 export const BuySellButton = styled.button`
-    border-radius: 5px;
-    border: 1px solid #92cd86;
+    width: 50px;
+    border-radius: 25px;
+    padding: 0.5rem;
+    border: 1px solid #7eda67;
+    margin-bottom: 0.25rem;
+    cursor: pointer;
     &:hover {
-        box-shadow: 0px 0px 5px #92cd8645;
+        border: 1px solid transparent;
+        background-color: #7eda67;
+        color: black;
     }
     &:active {
-        background-color: #92cd8645;
+        border: 1px solid whitesmoke;
+        box-shadow: 0 0 8px whitesmoke;
     }
 `;

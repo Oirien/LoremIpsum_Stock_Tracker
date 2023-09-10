@@ -109,12 +109,21 @@ function PortfolioContainer() {
     useEffect(() => setApiSpecificStockPrice(apiPriceToFind), [specificStock]);
     return (
         <>
-            <div style={{ textAlign: 'center' }}>
-                Total Value Of Stocks <br />
-                {totalValueOfStocks
-                    .toString()
-                    .replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')}
-                $
+            <div
+                style={{
+                    textAlign: 'start',
+                    paddingLeft: '13rem',
+                    borderBottom: '1px solid #92cd86',
+                    display: 'flex',
+                }}
+            >
+                <p>
+                    Total Value Of Portfolio: $
+                    {totalValueOfStocks
+                        .toString()
+                        .replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')}
+                </p>
+                <p></p>
             </div>
             <PortfolioWrapper>
                 <FilterArea>

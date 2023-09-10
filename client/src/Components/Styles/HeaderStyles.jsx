@@ -6,7 +6,7 @@ export const NavBar = styled.nav`
     justify-content: center;
     align-items: center;
     min-height: 2rem;
-    padding: 0.5rem;
+    padding: 0.5rem 0;
     width: 100vw;
     gap: 1rem;
     border-bottom: 1px solid #92cd86;

@@ -4,6 +4,7 @@ export const StocksWrapper = styled.div`
     display: flex;
     gap: 30px;
     min-height: 50vh;
+    margin-right: 1rem;
 `;
 
 export const StockInformation = styled.div`

@@ -1,5 +1,11 @@
 import React from 'react';
 import { useState } from 'react';
+import {
+    AccSuppButton,
+    FormWrapper,
+    InputText,
+    InputWrapper,
+} from '../Components/Styles/SupportAccountStyles';
 
 function AddMoneyToWallet({ userOne, queryClient, setAddBalanceStatus }) {
     const [wallet, setWallet] = useState(userOne.wallet);
@@ -28,19 +34,18 @@ function AddMoneyToWallet({ userOne, queryClient, setAddBalanceStatus }) {
     return (
         <>
             <div>
-                <form onSubmit={handleAddBalance}>
-                    Amount:{' '}
-                    <label htmlFor="add-balance">
-                        <input
+                <FormWrapper onSubmit={handleAddBalance}>
+                    <InputWrapper>
+                        <InputText
                             type="number"
                             min={1}
                             max={2000000000}
                             value={addBalance}
                             onChange={(e) => setAddBalance(e.target.value)}
                         />
-                    </label>
-                    <button>Add</button>
-                </form>
+                    </InputWrapper>
+                    <AccSuppButton>Add</AccSuppButton>
+                </FormWrapper>
             </div>
         </>
     );

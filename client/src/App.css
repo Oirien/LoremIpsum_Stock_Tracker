@@ -3,6 +3,8 @@
     list-style: none;
     background-color: #232323;
     color: whitesmoke;
+    margin: 0;
+    padding: 0;
 }
 
 .search-results__list {

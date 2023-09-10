@@ -11,7 +11,7 @@ export const NewsWrapper = styled.div`
 
 export const NewsArticle = styled.li`
     box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.4);
-    width: 30%;
+    width: 25%;
     padding-bottom: 20px;
     border-radius: 0 0 25px 25px;
     text-align: center;
@@ -25,6 +25,7 @@ export const NewsArticle = styled.li`
 export const ArticleWrapper = styled.div`
     display: Flex;
     flex-direction: column;
+    justify-content: space-around;
     padding: 0.5rem;
     background-color: #474747;
     * {
@@ -42,23 +43,27 @@ export const DateStyle = styled.div`
     /* border: 1px solid white; */
     display: flex;
     justify-content: flex-end;
-    border-radius: 50%;
+    border-radius: 25px;
     padding-right: 1rem;
     background-color: #474747;
 `;
 
 export const MoreInfoButton = styled.a`
-    padding: 5px 10px;
     width: 30%;
     align-self: center;
-    background-color: #c4c4c4;
-    border-radius: 25px;
-    font-weight: bold;
     text-decoration: none;
-    color: #193214;
+    border-radius: 25px;
+    padding: 0.5rem;
+    border: 1px solid #7eda67;
+    cursor: pointer;
     &:hover {
-        color: whitesmoke;
-        background-color: #264b1f;
+        border: 1px solid transparent;
+        background-color: #7eda67;
+        color: black;
+    }
+    &:active {
+        border: 1px solid whitesmoke;
+        box-shadow: 0 0 8px whitesmoke;
     }
 `;
 
@@ -101,11 +106,13 @@ export const ArticleSummary = styled.p`
     max-height: 175px;
     font-weight: 200;
     overflow-y: hidden;
+    margin: 1rem 0;
 `;
 
 export const ArticleTitle = styled.h3`
     max-height: 150px;
     padding-bottom: 1rem;
     border-bottom: 1px solid whitesmoke;
+    display: flex;
     align-self: center;
 `;
