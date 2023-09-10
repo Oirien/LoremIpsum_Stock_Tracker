@@ -6,6 +6,9 @@ import {
     FormWrapper,
     ButtonDiv,
     AccSuppButton,
+    InputWrapper,
+    InputText,
+    InputWrapperLarge,
 } from '../Components/Styles/SupportAccountStyles';
 
 function EditAccount({ userOne, queryClient, setEdit }) {
@@ -43,49 +46,57 @@ function EditAccount({ userOne, queryClient, setEdit }) {
                 <label htmlFor="username">
                     <span>Username:</span>
                     {/* Regex: Characters or Digits 0-9 or underscore (_), min char 4 max 18 */}
-                    <input
-                        type="text"
-                        pattern="^[\w]{4,18}$"
-                        value={name}
-                        required
-                        onChange={(e) => setName(e.target.value)}
-                    />
+                    <InputWrapper>
+                        <InputText
+                            type="text"
+                            pattern="^[\w]{4,18}$"
+                            value={name}
+                            required
+                            onChange={(e) => setName(e.target.value)}
+                        />
+                    </InputWrapper>
                 </label>
 
                 <label htmlFor="email">
                     Email:
                     {/* Regex: (characters + digits + symbols _.-) @ (characters + digits + _.) . (Char + Digits _.)     */}
-                    <input
-                        type="text"
-                        value={email}
-                        required
-                        pattern="[\w%.\-]{1,40}@[\w.]{2,20}.[\w.]"
-                        onChange={(e) => {
-                            setEmail(e.target.value);
-                        }}
-                    />
+                    <InputWrapperLarge>
+                        <InputText
+                            type="text"
+                            value={email}
+                            required
+                            pattern="[\w%.\-]{1,40}@[\w.]{2,20}.[\w.]"
+                            onChange={(e) => {
+                                setEmail(e.target.value);
+                            }}
+                        />
+                    </InputWrapperLarge>
                 </label>
                 <label htmlFor="billing_address">
                     Billing Address:
                     {/* Regex: Char + digits + commas + Spaces + dots*/}
-                    <input
-                        type="text"
-                        pattern="^[A-Za-z0-9\s,.]+$"
-                        value={billingAddress}
-                        required
-                        onChange={(e) => setBillingAddress(e.target.value)}
-                    />
+                    <InputWrapperLarge>
+                        <InputText
+                            type="text"
+                            pattern="^[A-Za-z0-9\s,.]+$"
+                            value={billingAddress}
+                            required
+                            onChange={(e) => setBillingAddress(e.target.value)}
+                        />
+                    </InputWrapperLarge>
                 </label>
                 <label htmlFor="phone">
                     Phone:
                     {/* Regex: 10 numbers , cant start with 0 */}
-                    <input
-                        type="text"
-                        value={phone}
-                        required
-                        pattern="^[1-9]\d{9}$"
-                        onChange={(e) => setPhone(e.target.value)}
-                    />
+                    <InputWrapper>
+                        <InputText
+                            type="text"
+                            value={phone}
+                            required
+                            pattern="^[1-9]\d{9}$"
+                            onChange={(e) => setPhone(e.target.value)}
+                        />
+                    </InputWrapper>
                 </label>
                 <ButtonDiv>
                     <AccSuppButton onClick={() => setEdit(false)}>

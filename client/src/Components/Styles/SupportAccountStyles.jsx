@@ -29,7 +29,7 @@ export const ButtonDiv = styled.div`
 
 export const AccSuppButton = styled.button`
     width: 150px;
-    border-radius: 15px;
+    border-radius: 25px;
     padding: 0.5rem;
     border: 1px solid #7eda67;
     cursor: pointer;
@@ -46,4 +46,41 @@ export const AccSuppButton = styled.button`
 export const BasicTitle = styled.h1`
     border-bottom: 3px solid #7eda67;
     width: min-content;
+`;
+
+export const InputWrapper = styled.div`
+    width: 145px;
+    height: 1;
+    border: none;
+    border-radius: 10px;
+    padding: 0 0.125rem;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    box-shadow: 0px 0px 8px black;
+`;
+
+export const InputWrapperLarge = styled.div`
+    width: 300px;
+    height: 2;
+    border: none;
+    border-radius: 10px;
+    padding: 0 0.125rem;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    box-shadow: 0px 0px 8px black;
+`;
+
+export const InputText = styled.input`
+    background-color: transparent;
+    border: none;
+    height: 100%;
+    font-size: 1rem;
+    width: 100%;
+    margin-left: 5px;
+    color: black;
+    &:focus {
+        outline: none;
+    }
 `;

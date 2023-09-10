@@ -3,6 +3,8 @@ import { useState } from 'react';
 import {
     AccSuppButton,
     FormWrapper,
+    InputText,
+    InputWrapper,
 } from '../Components/Styles/SupportAccountStyles';
 
 function AddMoneyToWallet({ userOne, queryClient, setAddBalanceStatus }) {
@@ -33,18 +35,15 @@ function AddMoneyToWallet({ userOne, queryClient, setAddBalanceStatus }) {
         <>
             <div>
                 <FormWrapper onSubmit={handleAddBalance}>
-                    <div>
-                        Amount:{' '}
-                        <label htmlFor="add-balance">
-                            <input
-                                type="number"
-                                min={1}
-                                max={2000000000}
-                                value={addBalance}
-                                onChange={(e) => setAddBalance(e.target.value)}
-                            />
-                        </label>
-                    </div>
+                    <InputWrapper>
+                        <InputText
+                            type="number"
+                            min={1}
+                            max={2000000000}
+                            value={addBalance}
+                            onChange={(e) => setAddBalance(e.target.value)}
+                        />
+                    </InputWrapper>
                     <AccSuppButton>Add</AccSuppButton>
                 </FormWrapper>
             </div>
