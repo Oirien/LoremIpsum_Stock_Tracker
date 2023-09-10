@@ -93,7 +93,7 @@ function EditAccount({ userOne, queryClient, setEdit }) {
                             type="text"
                             value={phone}
                             required
-                            pattern="^[1-9]\d{9}$"
+                            pattern="^[0-9\-\+]{9,15}$"
                             onChange={(e) => setPhone(e.target.value)}
                         />
                     </InputWrapper>
