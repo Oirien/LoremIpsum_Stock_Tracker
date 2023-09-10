@@ -4,7 +4,7 @@ export const BuySellWrapper = styled.div`
     display: flex;
     justify-content: end;
     align-items: center;
-    padding-right: 1rem;
+    padding-right: 10%;
     gap: 1rem;
 `;
 

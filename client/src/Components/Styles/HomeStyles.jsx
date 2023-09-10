@@ -11,7 +11,7 @@ export const NewsWrapper = styled.div`
 
 export const NewsArticle = styled.li`
     box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.4);
-    width: 30%;
+    width: 25%;
     padding-bottom: 20px;
     border-radius: 0 0 25px 25px;
     text-align: center;
@@ -25,6 +25,7 @@ export const NewsArticle = styled.li`
 export const ArticleWrapper = styled.div`
     display: Flex;
     flex-direction: column;
+    justify-content: space-around;
     padding: 0.5rem;
     background-color: #474747;
     * {
@@ -42,7 +43,7 @@ export const DateStyle = styled.div`
     /* border: 1px solid white; */
     display: flex;
     justify-content: flex-end;
-    border-radius: 50%;
+    border-radius: 25px;
     padding-right: 1rem;
     background-color: #474747;
 `;
@@ -101,11 +102,13 @@ export const ArticleSummary = styled.p`
     max-height: 175px;
     font-weight: 200;
     overflow-y: hidden;
+    margin: 1rem 0;
 `;
 
 export const ArticleTitle = styled.h3`
     max-height: 150px;
     padding-bottom: 1rem;
     border-bottom: 1px solid whitesmoke;
+    display: flex;
     align-self: center;
 `;

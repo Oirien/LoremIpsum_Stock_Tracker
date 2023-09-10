@@ -75,9 +75,10 @@ export const HiddenComponent = styled.div`
     height: 50%;
     border: 1px solid #7eda67;
     margin-left: auto;
-    margin-right: 2em;
+    margin-right: 2rem;
+    margin-top: 1rem;
     flex: 1;
     background-color: #474747;
     position: sticky;
-    top: 10em;
+    top: 10rem;
 `;
