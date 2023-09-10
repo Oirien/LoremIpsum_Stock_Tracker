@@ -9,6 +9,7 @@ import { useQueryClient } from 'react-query';
 import Chart from './StockChart';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
+import ScrollToTop from 'react-scroll-to-top';
 import {
     StocksWrapper,
     StockInformation,
@@ -160,6 +161,11 @@ function Stock() {
                     </NewsArticle>
                 ))}
             </NewsWrapper>
+            <ScrollToTop
+                smooth
+                color="black"
+                className="scroll-to-top-button"
+            />
         </>
     );
 }
