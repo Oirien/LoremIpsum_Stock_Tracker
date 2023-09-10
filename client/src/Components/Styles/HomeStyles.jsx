@@ -49,17 +49,21 @@ export const DateStyle = styled.div`
 `;
 
 export const MoreInfoButton = styled.a`
-    padding: 5px 10px;
     width: 30%;
     align-self: center;
-    background-color: #c4c4c4;
-    border-radius: 25px;
-    font-weight: bold;
     text-decoration: none;
-    color: #193214;
+    border-radius: 25px;
+    padding: 0.5rem;
+    border: 1px solid #7eda67;
+    cursor: pointer;
     &:hover {
-        color: whitesmoke;
-        background-color: #264b1f;
+        border: 1px solid transparent;
+        background-color: #7eda67;
+        color: black;
+    }
+    &:active {
+        border: 1px solid whitesmoke;
+        box-shadow: 0 0 8px whitesmoke;
     }
 `;
 

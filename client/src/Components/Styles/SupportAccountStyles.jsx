@@ -34,7 +34,7 @@ export const AccSuppButton = styled.button`
     border: 1px solid #7eda67;
     cursor: pointer;
     &:hover {
-        border: none;
+        border: 1px solid transparent;
         background-color: #7eda67;
         color: black;
     }
