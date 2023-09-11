@@ -48,10 +48,12 @@ function EditAccount({ userOne, queryClient, setEdit }) {
                     {/* Regex: Characters or Digits 0-9 or underscore (_), min char 4 max 18 */}
                     <InputWrapper>
                         <InputText
+                            id="username"
                             type="text"
                             pattern="^[\w]{4,18}$"
                             value={name}
                             required
+                            title="Username can have 4-18 Character and Underscore (_)"
                             onChange={(e) => setName(e.target.value)}
                         />
                     </InputWrapper>
@@ -62,9 +64,11 @@ function EditAccount({ userOne, queryClient, setEdit }) {
                     {/* Regex: (characters + digits + symbols _.-) @ (characters + digits + _.) . (Char + Digits _.)     */}
                     <InputWrapperLarge>
                         <InputText
+                            id="email"
                             type="text"
                             value={email}
                             required
+                            title="Example: big_jimmy@yahoo.com"
                             pattern="[\w%.\-]{1,40}@[\w.]{2,20}.[\w.]"
                             onChange={(e) => {
                                 setEmail(e.target.value);
@@ -77,10 +81,12 @@ function EditAccount({ userOne, queryClient, setEdit }) {
                     {/* Regex: Char + digits + commas + Spaces + dots*/}
                     <InputWrapperLarge>
                         <InputText
+                            id="billing-address"
                             type="text"
                             pattern="^[A-Za-z0-9\s,.]+$"
                             value={billingAddress}
                             required
+                            title="Billing Address can have Characters , Numbers, Dot (.) and Comma (,)"
                             onChange={(e) => setBillingAddress(e.target.value)}
                         />
                     </InputWrapperLarge>
@@ -90,10 +96,14 @@ function EditAccount({ userOne, queryClient, setEdit }) {
                     {/* Regex: 10 numbers , cant start with 0 */}
                     <InputWrapper>
                         <InputText
+                            id="phone"
                             type="text"
                             value={phone}
                             required
                             pattern="^\+?\d{0,4}?\s?\d{6,14}$"
+                            title="Examples: 0123456789,
+                            0044 0123456789,
+                             +0044 0123456789, +44 0123456789"
                             onChange={(e) => setPhone(e.target.value)}
                         />
                     </InputWrapper>
