@@ -64,21 +64,31 @@
     border-image: linear-gradient(to bottom, #92cd86, rgba(0, 0, 0, 0)) 1 100%;
 }
 
+/* width: 30%;
+align-self: center;
+text-decoration: none;
+border-radius: 25px;
+padding: 0.5rem;
+border: 1px solid #7eda67;
+cursor: pointer;
+&:hover {
+    border: 1px solid transparent;
+    background-color: #7eda67;
+    color: black;
+}
+&:active {
+    border: 1px solid whitesmoke;
+    box-shadow: 0 0 8px whitesmoke;
+}
+`; */
+
 .action-button {
-    background-color: #c2fbd7;
-    border: 1px solid #92cd86;
+    background-color: transparent;
+    border: 1px solid #7eda67;
     border-radius: 100px;
-    box-shadow:
-        rgba(44, 187, 99, 0.2) 0 -25px 18px -14px inset,
-        rgba(44, 187, 99, 0.15) 0 1px 2px,
-        rgba(44, 187, 99, 0.15) 0 2px 4px,
-        rgba(44, 187, 99, 0.15) 0 4px 8px,
-        rgba(44, 187, 99, 0.15) 0 8px 16px,
-        rgba(44, 187, 99, 0.15) 0 16px 32px;
-    color: green;
     cursor: pointer;
     display: inline-block;
-    padding: 7px 20px;
+    padding: 0.5rem;
     width: 100%;
     text-align: center;
     text-decoration: none;
@@ -90,19 +100,16 @@
 }
 
 .action-button-focused {
-    background-color: #63dc8f;
-    border: 1px solid #c2fbd7;
+    border: 1px solid whitesmoke;
+    box-shadow: 0 0 8px whitesmoke;
+    background-color: #7eda67;
+    color: black;
 }
 
 .action-button:hover {
-    box-shadow:
-        rgba(44, 187, 99, 0.35) 0 -25px 18px -14px inset,
-        rgba(44, 187, 99, 0.25) 0 1px 2px,
-        rgba(44, 187, 99, 0.25) 0 2px 4px,
-        rgba(44, 187, 99, 0.25) 0 4px 8px,
-        rgba(44, 187, 99, 0.25) 0 8px 16px,
-        rgba(44, 187, 99, 0.25) 0 16px 32px;
-    transform: scale(1.05);
+    border: 1px solid transparent;
+    background-color: #7eda67;
+    color: black;
 }
 
 @media all and (max-width: 1400px) and (min-width: 700px) {

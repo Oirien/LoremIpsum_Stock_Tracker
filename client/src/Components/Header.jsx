@@ -184,12 +184,12 @@ function Header({ wallet }) {
                     )}
                 </div>
                 <div>
-                    Wallet:{' '}
+                    Wallet:
                     <span style={{ color: '#92cd86' }}>
+                        $
                         {wallet
                             .toString()
                             .replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,')}
-                        $
                     </span>{' '}
                 </div>
             </NavBar>

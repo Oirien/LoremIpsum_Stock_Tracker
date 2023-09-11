@@ -81,13 +81,13 @@ export const HeroWrapper = styled.div`
 
 export const HeroImg = styled.img`
     width: 500px;
-    margin-right: 2rem;
+    padding-right: 2rem;
+    border-right: 5px solid #92cd86;
 `;
 
 export const HeroRight = styled.div`
     display: flex;
     flex-direction: column;
-    border-left: 5px solid #92cd86;
     padding-left: 2rem;
 `;
 

@@ -112,7 +112,7 @@ function PortfolioContainer() {
             <div
                 style={{
                     textAlign: 'start',
-                    marginLeft: '13rem',
+                    marginLeft: '11.75rem',
                     borderBottom: '1px solid #92cd86',
                     width: 'max-content',
                 }}
