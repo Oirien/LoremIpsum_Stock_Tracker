@@ -208,6 +208,7 @@ function StockBuySell({ stockIndividualData, userData, queryClient }) {
                                     max={maxSell}
                                     required
                                     value={stocksSold}
+                                    placeholder={`Max: ${maxSell}`}
                                     onChange={(e) =>
                                         setStocksSold(Number(e.target.value))
                                     }
