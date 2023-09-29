@@ -1,4 +1,5 @@
-#Lorem Ipsum stock tracking
+# Lorem Ipsum stock tracking
+
 This is a react webapp using crud operations to store local stock userdata on a RESTful API via mongodb.
 We used TwelveData API and FinnHub API for the stock and information in real time. You will need API keys for those yourself if you want to run the app.
 
