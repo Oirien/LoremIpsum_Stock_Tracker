@@ -1,7 +1,7 @@
 # Lorem Ipsum stock tracking
 
 This is a react webapp using crud operations to store local stock userdata on a RESTful API via mongodb.
-We used TwelveData API and FinnHub API for the stock and information in real time. You will need API keys for those yourself if you want to run the app.
+We used TwelveData API and FinnHub API for the stock and information in real time. You will need API keys for those yourself if you want to run the app which can be found at the following, https://twelvedata.com/ and https://finnhub.io/ .
 
 https://github.com/Oirien/LoremIpsum_Stock_Tracker/assets/136370232/a729e51c-70c3-4141-9423-dc3799205288
 
